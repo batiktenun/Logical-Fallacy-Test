@@ -1,1 +1,642 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Tes Logical Fallacy - Uji Cara Pikir Anda!</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .disclaimer {
+            background: #e74c3c;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        .screen {
+            display: none;
+            padding: 25px;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        /* Start Screen */
+        .start-screen {
+            text-align: center;
+        }
+
+        .feature-list {
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+
+        /* Quiz Screen */
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .question-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #3498db;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 15px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            background: #f1f8ff;
+            border-color: #3498db;
+        }
+
+        .option.selected {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        button.secondary {
+            background: #6c757d;
+        }
+
+        /* Results Screen */
+        .results-screen {
+            text-align: center;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .feedback {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .feedback.good {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .feedback.average {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .feedback.poor {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .results-details {
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .result-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .result-item.correct {
+            border-left: 5px solid #28a745;
+        }
+
+        .result-item.incorrect {
+            border-left: 5px solid #dc3545;
+        }
+
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: #3498db;
+            transition: width 0.3s;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Kuis Tes Logical Fallacy</h1>
+            <p class="subtitle">Uji seberapa baik Anda mengenali kesesatan berpikir dalam argumen sehari-hari</p>
+            <div class="disclaimer">
+                ⚠️ Kuis ini untuk edukasi, bukan diagnosis psikologis
+            </div>
+        </header>
+
+        <!-- Start Screen -->
+        <section id="start-screen" class="screen active">
+            <div class="start-screen">
+                <h2>Selamat Datang di Kuis Logical Fallacy!</h2>
+                <p>Kuis ini akan menguji kemampuan Anda dalam mengenali 10 jenis kesesatan logika yang umum.</p>
+                
+                <div class="feature-list">
+                    <h3>Apa yang akan Anda dapatkan:</h3>
+                    <ul>
+                        <li>✅ 10 pertanyaan scenario nyata</li>
+                        <li>✅ Penjelasan detail untuk setiap jawaban</li>
+                        <li>✅ Analisis kemampuan berpikir kritis Anda</li>
+                        <li>✅ Tips untuk menghindari fallacy dalam berpikir</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <button onclick="startQuiz()">Mulai Kuis Sekarang!</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="quiz-screen" class="screen">
+            <div class="quiz-info">
+                <div>Pertanyaan <span id="current-question">1</span> dari <span id="total-questions">10</span></div>
+                <div>Skor: <span id="current-score">0</span></div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="quiz-progress" style="width: 10%;"></div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-text" id="question-text">Memuat pertanyaan...</div>
+            </div>
+
+            <div class="options-container" id="options-container">
+                <!-- Options will be inserted here by JavaScript -->
+            </div>
+
+            <div class="navigation">
+                <button id="prev-btn" onclick="previousQuestion()" class="secondary" disabled>Sebelumnya</button>
+                <button id="next-btn" onclick="nextQuestion()">Selanjutnya</button>
+                <button id="submit-btn" onclick="submitQuiz()" style="display: none;">Lihat Hasil</button>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="results-screen" class="screen">
+            <div class="results-screen">
+                <h2>Hasil Kuis Logical Fallacy Anda</h2>
+                
+                <div class="score-display">
+                    <div class="score-circle" id="final-score-circle">0/10</div>
+                    <div id="score-text">Memuat hasil...</div>
+                </div>
+
+                <div class="feedback" id="feedback-message">
+                    <!-- Feedback will be inserted here -->
+                </div>
+
+                <div class="results-details" id="results-details">
+                    <!-- Results details will be inserted here -->
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <button onclick="restartQuiz()">Ulangi Kuis</button>
+                    <button onclick="showStartScreen()" class="secondary">Kembali ke Menu</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2023 Kuis Logical Fallacy - Tingkatkan Kemampuan Berpikir Kritis Anda
+    </footer>
+
+    <script>
+        // Database pertanyaan kuis
+        const quizQuestions = [
+            {
+                question: "Anda berdebat dengan teman tentang politik. Dia berkata: 'Kamu tidak bisa mempercayai pendapatnya tentang ekonomi karena dia bukan lulusan sarjana.' Kesalahan logika apa ini?",
+                options: [
+                    "Straw Man",
+                    "Ad Hominem", 
+                    "False Dilemma",
+                    "Tidak ada fallacy"
+                ],
+                correctAnswer: 1,
+                explanation: "Ini adalah <strong>Ad Hominem</strong> karena menyerang latar belakang pendidikan seseorang alih-alih membahas argumennya tentang ekonomi."
+            },
+            {
+                question: "Seorang politisi berkata: 'Jika kita melegalkan ganja untuk medis, selanjutnya orang akan minta ganja untuk rekreasi, lalu kecanduan narkoba akan merajalela, dan masyarakat kita akan hancur.' Apa fallacy ini?",
+                options: [
+                    "Slippery Slope",
+                    "False Cause",
+                    "Appeal to Emotion", 
+                    "Hasty Generalization"
+                ],
+                correctAnswer: 0,
+                explanation: "Ini adalah <strong>Slippery Slope</strong> karena mengasumsikan satu tindakan kecil akan menyebabkan rangkaian konsekuensi ekstrem tanpa bukti yang cukup."
+            },
+            {
+                question: "Dalam diskusi tentang reformasi pendidikan, seseorang berkata: 'Jadi menurutmu kita harus memecat semua guru yang sudah lama mengajar? Itu ide yang kejam!' Padahal argumen awal hanya tentang pelatihan ulang untuk guru. Kesalahan apa ini?",
+                options: [
+                    "Straw Man",
+                    "Ad Hominem",
+                    "Tu Quoque",
+                    "Circular Reasoning"
+                ],
+                correctAnswer: 0,
+                explanation: "Ini adalah <strong>Straw Man</strong> karena memelintir argumen asli (pelatihan ulang) menjadi versi ekstrem (memecat semua guru) yang mudah diserang."
+            },
+            {
+                question: "'Setiap kali saya memakai jersey tim sepakbola favorit saya, tim saya menang. Jadi, jersey ini membawa keberuntungan.' Kesalahan logika apa ini?",
+                options: [
+                    "False Cause",
+                    "Hasty Generalization", 
+                    "Appeal to Authority",
+                    "False Dilemma"
+                ],
+                correctAnswer: 0,
+                explanation: "Ini adalah <strong>False Cause</strong> (Post Hoc) karena mengasumsikan A menyebabkan B hanya karena A terjadi sebelum B, tanpa hubungan kausal yang nyata."
+            },
+            {
+                question: "'Kalau kamu tidak mendukung perang melawan terorisme, berarti kamu mendukung teroris.' Pernyataan ini mengandung fallacy apa?",
+                options: [
+                    "False Dilemma",
+                    "Ad Hominem",
+                    "Slippery Slope",
+                    "Appeal to Emotion"
+                ],
+                correctAnswer: 0,
+                explanation: "Ini adalah <strong>False Dilemma</strong> karena hanya menyajikan dua pilihan ekstrem (mendukung perang atau mendukung teroris) dan mengabaikan posisi tengah yang mungkin."
+            },
+            {
+                question: "'Produk ini pasti bagus karena diendorse oleh artis terkenal.' Kesalahan logika apa ini?",
+                options: [
+                    "Appeal to Authority",
+                    "Ad Hominem",
+                    "Straw Man", 
+                    "Tu Quoque"
+                ],
+                correctAnswer: 0,
+                explanation: "Ini adalah <strong>Appeal to Authority</strong> karena menggunakan otoritas (artis terkenal) sebagai bukti kebenaran, tanpa bukti objektif tentang kualitas produk."
+            },
+            {
+                question: "'Saya bertemu tiga orang dari kota X dan mereka semuanya kasar. Jadi, pasti semua orang di kota X itu kasar.' Kesalahan apa ini?",
+                options: [
+                    "Hasty Generalization",
+                    "False Cause",
+                    "Straw Man",
+                    "Circular Reasoning"
+                ],
+                correctAnswer: 0,
+                explanation: "Ini adalah <strong>Hasty Generalization</strong> karena menarik kesimpulan umum tentang seluruh populasi berdasarkan sampel yang sangat kecil dan tidak representatif."
+            },
+            {
+                question: "'Kenapa kamu marah saya mencontek? Kamu dulu juga pernah mencontek!' Kesalahan logika apa ini?",
+                options: [
+                    "Tu Quoque",
+                    "Ad Hominem", 
+                    "False Dilemma",
+                    "Appeal to Emotion"
+                ],
+                correctAnswer: 0,
+                explanation: "Ini adalah <strong>Tu Quoque</strong> (You Too) karena membenarkan kesalahan sendiri dengan alasan orang lain juga pernah melakukan kesalahan yang sama."
+            },
+            {
+                question: "'Dukunglah produk lokal ini jika kamu mencintai tanah airmu!' Pernyataan ini menggunakan fallacy apa?",
+                options: [
+                    "Appeal to Emotion",
+                    "Ad Hominem",
+                    "False Cause", 
+                    "Straw Man"
+                ],
+                correctAnswer: 0,
+                explanation: "Ini adalah <strong>Appeal to Emotion</strong> karena membujuk dengan memanfaatkan emosi (nasionalisme) alih-alih memberikan alasan logis tentang keunggulan produk."
+            },
+            {
+                question: "'Alkitab adalah firman Tuhan karena di dalamnya tertulis bahwa itu adalah firman Tuhan.' Kesalahan logika apa ini?",
+                options: [
+                    "Circular Reasoning",
+                    "False Cause",
+                    "Appeal to Authority", 
+                    "Hasty Generalization"
+                ],
+                correctAnswer: 0,
+                explanation: "Ini adalah <strong>Circular Reasoning</strong> karena kesimpulan (Alkitab adalah firman Tuhan) sama dengan premisnya (Alkitab mengatakan itu firman Tuhan)."
+            }
+        ];
+
+        // State kuis
+        let currentQuestionIndex = 0;
+        let userAnswers = Array(quizQuestions.length).fill(null);
+        let score = 0;
+
+        // Fungsi untuk memulai kuis
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = Array(quizQuestions.length).fill(null);
+            score = 0;
+            showScreen('quiz-screen');
+            loadQuestion();
+        }
+
+        // Fungsi untuk menampilkan screen tertentu
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        // Fungsi untuk memuat pertanyaan
+        function loadQuestion() {
+            const question = quizQuestions[currentQuestionIndex];
+            
+            // Update info kuis
+            document.getElementById('current-question').textContent = currentQuestionIndex + 1;
+            document.getElementById('total-questions').textContent = quizQuestions.length;
+            document.getElementById('current-score').textContent = score;
+            
+            // Update progress bar
+            const progressPercentage = ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
+            document.getElementById('quiz-progress').style.width = `${progressPercentage}%`;
+            
+            // Tampilkan pertanyaan
+            document.getElementById('question-text').textContent = question.question;
+            
+            // Tampilkan opsi jawaban
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionElement.classList.add('selected');
+                }
+                optionElement.textContent = option;
+                optionElement.onclick = () => selectOption(index);
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Update tombol navigasi
+            document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+            
+            if (currentQuestionIndex === quizQuestions.length - 1) {
+                document.getElementById('next-btn').style.display = 'none';
+                document.getElementById('submit-btn').style.display = 'block';
+            } else {
+                document.getElementById('next-btn').style.display = 'block';
+                document.getElementById('submit-btn').style.display = 'none';
+            }
+        }
+
+        // Fungsi untuk memilih opsi
+        function selectOption(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            
+            // Update tampilan opsi yang dipilih
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, index) => {
+                option.classList.remove('selected');
+                if (index === optionIndex) {
+                    option.classList.add('selected');
+                }
+            });
+        }
+
+        // Fungsi untuk pertanyaan berikutnya
+        function nextQuestion() {
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        // Fungsi untuk pertanyaan sebelumnya
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        // Fungsi untuk submit kuis
+        function submitQuiz() {
+            // Hitung skor
+            score = 0;
+            quizQuestions.forEach((question, index) => {
+                if (userAnswers[index] === question.correctAnswer) {
+                    score++;
+                }
+            });
+            
+            // Tampilkan hasil
+            showResults();
+        }
+
+        // Fungsi untuk menampilkan hasil
+        function showResults() {
+            // Update elemen hasil
+            document.getElementById('final-score-circle').textContent = `${score}/${quizQuestions.length}`;
+            document.getElementById('score-text').textContent = `Anda menjawab ${score} dari ${quizQuestions.length} pertanyaan dengan benar`;
+            
+            // Berikan feedback berdasarkan skor
+            const feedbackElement = document.getElementById('feedback-message');
+            if (score >= 8) {
+                feedbackElement.className = 'feedback good';
+                feedbackElement.innerHTML = '<h3>🎉 Excellent! 🎉</h3><p>Anda memiliki kemampuan berpikir kritis yang sangat baik! Anda jarang terjebak dalam kesesatan logika.</p>';
+            } else if (score >= 5) {
+                feedbackElement.className = 'feedback average';
+                feedbackElement.innerHTML = '<h3>👍 Good Job!</h3><p>Kemampuan Anda cukup baik, tetapi masih perlu berlatih untuk mengenali beberapa jenis fallacy.</p>';
+            } else {
+                feedbackElement.className = 'feedback poor';
+                feedbackElement.innerHTML = '<h3>📚 Perlu Belajar Lagi</h3><p>Anda perlu mempelajari lebih dalam tentang logical fallacy. Terus berlatih!</p>';
+            }
+            
+            // Tampilkan detail hasil
+            const resultsDetails = document.getElementById('results-details');
+            resultsDetails.innerHTML = '<h3>Detail Jawaban:</h3>';
+            
+            quizQuestions.forEach((question, index) => {
+                const isCorrect = userAnswers[index] === question.correctAnswer;
+                const resultItem = document.createElement('div');
+                resultItem.className = `result-item ${isCorrect ? 'correct' : 'incorrect'}`;
+                
+                resultItem.innerHTML = `
+                    <p><strong>Pertanyaan ${index + 1}:</strong> ${question.question}</p>
+                    <p><strong>Jawaban Anda:</strong> ${userAnswers[index] !== null ? question.options[userAnswers[index]] : 'Tidak dijawab'}</p>
+                    <p><strong>Jawaban Benar:</strong> ${question.options[question.correctAnswer]}</p>
+                    <div class="explanation">${question.explanation}</div>
+                `;
+                
+                resultsDetails.appendChild(resultItem);
+            });
+            
+            showScreen('results-screen');
+        }
+
+        // Fungsi untuk mengulang kuis
+        function restartQuiz() {
+            startQuiz();
+        }
+
+        // Fungsi untuk kembali ke menu awal
+        function showStartScreen() {
+            showScreen('start-screen');
+        }
+
+        // Inisialisasi
+        document.addEventListener('DOMContentLoaded', function() {
+            showScreen('start-screen');
+        });
+    </script>
+</body>
+</html>
