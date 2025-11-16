@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuis Tes Logical Fallacy - Uji Cara Pikir Anda!</title>
+    <title>Tes Cara Berpikir Kritis - Apakah Pola Pikir Anda Logis?</title>
     <style>
         * {
             box-sizing: border-box;
@@ -91,36 +91,49 @@
             margin-bottom: 20px;
         }
 
-        .question-container {
+        .scenario-container {
             background: #f8f9fa;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-left: 5px solid #3498db;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .question-text {
+        .scenario-text {
             font-size: 1.2rem;
             margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .context {
+            background: #e8f4fc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-style: italic;
+            border-left: 3px solid #3498db;
         }
 
         .options-container {
             display: grid;
-            gap: 10px;
+            gap: 12px;
         }
 
         .option {
-            padding: 15px;
+            padding: 18px;
             background: white;
             border: 2px solid #ddd;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
+            text-align: left;
         }
 
         .option:hover {
             background: #f1f8ff;
             border-color: #3498db;
+            transform: translateY(-2px);
         }
 
         .option.selected {
@@ -128,20 +141,10 @@
             border-color: #28a745;
         }
 
-        .option.correct {
-            background: #d4edda;
-            border-color: #28a745;
-        }
-
-        .option.incorrect {
-            background: #f8d7da;
-            border-color: #dc3545;
-        }
-
         .navigation {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         button {
@@ -181,8 +184,6 @@
         }
 
         .score-display {
-            font-size: 3rem;
-            color: #2c3e50;
             margin: 20px 0;
         }
 
@@ -193,32 +194,54 @@
             background: #3498db;
             color: white;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             margin: 0 auto;
-            font-size: 2.5rem;
             font-weight: bold;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .score-main {
+            font-size: 2.5rem;
+        }
+
+        .score-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .personality-type {
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .feedback {
             margin: 20px 0;
             padding: 15px;
             border-radius: 8px;
+            text-align: left;
         }
 
         .feedback.good {
             background: #d4edda;
             color: #155724;
+            border-left: 5px solid #28a745;
         }
 
         .feedback.average {
             background: #fff3cd;
             color: #856404;
+            border-left: 5px solid #ffc107;
         }
 
         .feedback.poor {
             background: #f8d7da;
             color: #721c24;
+            border-left: 5px solid #dc3545;
         }
 
         .results-details {
@@ -230,21 +253,6 @@
         .result-item {
             padding: 15px;
             border-bottom: 1px solid #eee;
-        }
-
-        .result-item.correct {
-            border-left: 5px solid #28a745;
-        }
-
-        .result-item.incorrect {
-            border-left: 5px solid #dc3545;
-        }
-
-        .explanation {
-            margin-top: 10px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 5px;
         }
 
         .progress-bar {
@@ -261,6 +269,14 @@
             transition: width 0.3s;
         }
 
+        .thinking-tips {
+            background: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -268,36 +284,50 @@
             margin-top: 20px;
             font-size: 0.9rem;
         }
+
+        .psychological-insight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: left;
+            border-left: 4px solid #ffc107;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🧠 Kuis Tes Logical Fallacy</h1>
-            <p class="subtitle">Uji seberapa baik Anda mengenali kesesatan berpikir dalam argumen sehari-hari</p>
+            <h1>🧠 Tes Cara Berpikir Kritis</h1>
+            <p class="subtitle">Uji seberapa logis dan kritis pola pikir Anda dalam situasi sehari-hari</p>
             <div class="disclaimer">
-                ⚠️ Kuis ini untuk edukasi, bukan diagnosis psikologis
+                ⚠️ Tes ini untuk refleksi diri, bukan diagnosis psikologis
             </div>
         </header>
 
         <!-- Start Screen -->
         <section id="start-screen" class="screen active">
             <div class="start-screen">
-                <h2>Selamat Datang di Kuis Logical Fallacy!</h2>
-                <p>Kuis ini akan menguji kemampuan Anda dalam mengenali 10 jenis kesesatan logika yang umum.</p>
+                <h2>Temukan Pola Pikir Anda!</h2>
+                <p>Tes ini akan menganalisis cara Anda merespons berbagai situasi untuk mengungkap pola berpikir yang mungkin tidak Anda sadari.</p>
                 
                 <div class="feature-list">
                     <h3>Apa yang akan Anda dapatkan:</h3>
                     <ul>
-                        <li>✅ 10 pertanyaan scenario nyata</li>
-                        <li>✅ Penjelasan detail untuk setiap jawaban</li>
-                        <li>✅ Analisis kemampuan berpikir kritis Anda</li>
-                        <li>✅ Tips untuk menghindari fallacy dalam berpikir</li>
+                        <li>✅ 8 skenario kehidupan nyata</li>
+                        <li>✅ Analisis pola berpikir tersembunyi</li>
+                        <li>✅ Profil tipe pemikir Anda</li>
+                        <li>✅ Tips meningkatkan kualitas berpikir</li>
+                        <li>✅ Wawasan tentang bias kognitif</li>
                     </ul>
                 </div>
 
+                <div class="psychological-insight">
+                    <strong>💡 Fakta Psikologis:</strong> Manusia memiliki 180+ bias kognitif yang mempengaruhi keputusan tanpa disadari. Tes ini membantu mengenali beberapa di antaranya.
+                </div>
+
                 <div style="margin-top: 30px;">
-                    <button onclick="startQuiz()">Mulai Kuis Sekarang!</button>
+                    <button onclick="startQuiz()">Mulai Tes Sekarang!</button>
                 </div>
             </div>
         </section>
@@ -305,18 +335,20 @@
         <!-- Quiz Screen -->
         <section id="quiz-screen" class="screen">
             <div class="quiz-info">
-                <div>Pertanyaan <span id="current-question">1</span> dari <span id="total-questions">10</span></div>
-                <div>Skor: <span id="current-score">0</span></div>
+                <div>Skenario <span id="current-question">1</span> dari <span id="total-questions">8</span></div>
+                <div>Tes Berpikir Kritis</div>
             </div>
 
             <div class="progress-bar">
-                <div class="progress" id="quiz-progress" style="width: 10%;"></div>
+                <div class="progress" id="quiz-progress" style="width: 12.5%;"></div>
             </div>
 
-            <div class="question-container">
-                <div class="question-text" id="question-text">Memuat pertanyaan...</div>
+            <div class="scenario-container">
+                <div class="scenario-text" id="scenario-text">Memuat skenario...</div>
+                <div class="context" id="scenario-context"></div>
             </div>
 
+            <h3>Apa yang akan Anda lakukan/katakan?</h3>
             <div class="options-container" id="options-container">
                 <!-- Options will be inserted here by JavaScript -->
             </div>
@@ -324,22 +356,34 @@
             <div class="navigation">
                 <button id="prev-btn" onclick="previousQuestion()" class="secondary" disabled>Sebelumnya</button>
                 <button id="next-btn" onclick="nextQuestion()">Selanjutnya</button>
-                <button id="submit-btn" onclick="submitQuiz()" style="display: none;">Lihat Hasil</button>
+                <button id="submit-btn" onclick="submitQuiz()" style="display: none;">Lihat Hasil Tes</button>
             </div>
         </section>
 
         <!-- Results Screen -->
         <section id="results-screen" class="screen">
             <div class="results-screen">
-                <h2>Hasil Kuis Logical Fallacy Anda</h2>
+                <h2>Hasil Tes Cara Berpikir Anda</h2>
                 
                 <div class="score-display">
-                    <div class="score-circle" id="final-score-circle">0/10</div>
-                    <div id="score-text">Memuat hasil...</div>
+                    <div class="score-circle">
+                        <div class="score-main" id="final-score">0%</div>
+                        <div class="score-label">Kecenderungan Logis</div>
+                    </div>
+                </div>
+
+                <div class="personality-type">
+                    <h3 id="personality-title">Memuat hasil...</h3>
+                    <p id="personality-description"></p>
                 </div>
 
                 <div class="feedback" id="feedback-message">
                     <!-- Feedback will be inserted here -->
+                </div>
+
+                <div class="thinking-tips">
+                    <h3>🔧 Tips Meningkatkan Keterampilan Berpikir:</h3>
+                    <div id="thinking-tips-content"></div>
                 </div>
 
                 <div class="results-details" id="results-details">
@@ -347,7 +391,7 @@
                 </div>
 
                 <div style="margin-top: 30px;">
-                    <button onclick="restartQuiz()">Ulangi Kuis</button>
+                    <button onclick="restartQuiz()">Ulangi Tes</button>
                     <button onclick="showStartScreen()" class="secondary">Kembali ke Menu</button>
                 </div>
             </div>
@@ -355,134 +399,120 @@
     </div>
 
     <footer>
-        &copy; 2023 Kuis Logical Fallacy - Tingkatkan Kemampuan Berpikir Kritis Anda
+        &copy; 2023 Tes Berpikir Kritis - Kenali Pola Pikir Anda
     </footer>
 
     <script>
-        // Database pertanyaan kuis
-        const quizQuestions = [
+        // Database skenario tes
+        const quizScenarios = [
             {
-                question: "Anda berdebat dengan teman tentang politik. Dia berkata: 'Kamu tidak bisa mempercayai pendapatnya tentang ekonomi karena dia bukan lulusan sarjana.' Kesalahan logika apa ini?",
+                scenario: "Anda melihat postingan media sosial yang mengatakan: 'Produk ini sudah digunakan oleh 95% artis Hollywood! Bukti bahwa produk ini efektif.'",
+                context: "Postingan tersebut dari influencer terkenal dengan 2 juta followers",
                 options: [
-                    "Straw Man",
-                    "Ad Hominem", 
-                    "False Dilemma",
-                    "Tidak ada fallacy"
+                    "Langsung membeli produk karena banyak artis yang pakai",
+                    "Mencari review independen dan penelitian tentang produk tersebut",
+                    "Mengabaikan karena tidak percaya dengan artis Hollywood",
+                    "Berbagi postingan tersebut karena terlihat meyakinkan"
                 ],
-                correctAnswer: 1,
-                explanation: "Ini adalah <strong>Ad Hominem</strong> karena menyerang latar belakang pendidikan seseorang alih-alih membahas argumennya tentang ekonomi."
+                scores: [0, 3, 1, 0], // Skor untuk setiap pilihan (0-3)
+                analysis: "Pilihan terbaik adalah mencari bukti independen. Mengandalkan popularitas (Appeal to Popularity) tanpa bukti konkret adalah kesalahan logika umum."
             },
             {
-                question: "Seorang politisi berkata: 'Jika kita melegalkan ganja untuk medis, selanjutnya orang akan minta ganja untuk rekreasi, lalu kecanduan narkoba akan merajalela, dan masyarakat kita akan hancur.' Apa fallacy ini?",
+                scenario: "Teman Anda berkata: 'Saya tidak percaya dengan laporan iklim itu. Kemarin dingin sekali, mana mungkin ada pemanasan global?'",
+                context: "Percakapan santai di kafe saat cuaca memang unusually cold",
                 options: [
-                    "Slippery Slope",
-                    "False Cause",
-                    "Appeal to Emotion", 
-                    "Hasty Generalization"
+                    "Setuju, karena Anda juga merasakan cuaca yang dingin",
+                    "Menjelaskan perbedaan antara cuaca harian dan tren iklim jangka panjang",
+                    "Mengatakan teman Anda tidak memahami sains dengan benar",
+                    "Diam saja karena tidak ingin berdebat"
                 ],
-                correctAnswer: 0,
-                explanation: "Ini adalah <strong>Slippery Slope</strong> karena mengasumsikan satu tindakan kecil akan menyebabkan rangkaian konsekuensi ekstrem tanpa bukti yang cukup."
+                scores: [0, 3, 1, 1],
+                analysis: "Membedakan antara anekdot personal (cuaca hari ini) dengan data ilmiah (tren iklim 30+ tahun) menunjukkan pemikiran kritis yang baik."
             },
             {
-                question: "Dalam diskusi tentang reformasi pendidikan, seseorang berkata: 'Jadi menurutmu kita harus memecat semua guru yang sudah lama mengajar? Itu ide yang kejam!' Padahal argumen awal hanya tentang pelatihan ulang untuk guru. Kesalahan apa ini?",
+                scenario: "Atasan Anda mengatakan: 'Proyek sebelumnya gagal karena tim kita tidak disiplin. Jadi untuk proyek baru ini, kita harus menerapkan aturan yang sangat ketat.'",
+                context: "Proyek sebelumnya memang bermasalah, tetapi ada berbagai faktor penyebab",
                 options: [
-                    "Straw Man",
-                    "Ad Hominem",
-                    "Tu Quoque",
-                    "Circular Reasoning"
+                    "Menerima saja karena atasan pasti lebih tahu",
+                    "Menyarankan analisis akar masalah yang komprehensif terlebih dahulu",
+                    "Mengusulkan aturan yang lebih ketat dari yang diminta",
+                    "Berdiam diri karena takut dianggap membantah"
                 ],
-                correctAnswer: 0,
-                explanation: "Ini adalah <strong>Straw Man</strong> karena memelintir argumen asli (pelatihan ulang) menjadi versi ekstrem (memecat semua guru) yang mudah diserang."
+                scores: [0, 3, 1, 0],
+                analysis: "Hasty Generalization - menyimpulkan satu penyebab tanpa analisis mendalam. Pemikiran kritis mencari multiple causation."
             },
             {
-                question: "'Setiap kali saya memakai jersey tim sepakbola favorit saya, tim saya menang. Jadi, jersey ini membawa keberuntungan.' Kesalahan logika apa ini?",
+                scenario: "Anda membaca berita: 'Penjualan es krim meningkat bersamaan dengan meningkatnya kasus tenggelam. Waspada, es krim menyebabkan orang tenggelam!'",
+                context: "Data statistik menunjukkan korelasi yang nyata",
                 options: [
-                    "False Cause",
-                    "Hasty Generalization", 
-                    "Appeal to Authority",
-                    "False Dilemma"
+                    "Percaya dan berhenti makan es krim",
+                    "Mempertanyakan hubungan kausal dan mencari variabel ketiga (misal: musim panas)",
+                    "Menganggap ini berita bohong",
+                    "Membagikan berita ini untuk memperingati teman"
                 ],
-                correctAnswer: 0,
-                explanation: "Ini adalah <strong>False Cause</strong> (Post Hoc) karena mengasumsikan A menyebabkan B hanya karena A terjadi sebelum B, tanpa hubungan kausal yang nyata."
+                scores: [0, 3, 1, 0],
+                analysis: "Correlation ≠ Causation. Pemikir kritis mencari penjelasan alternatif sebelum menarik kesimpulan."
             },
             {
-                question: "'Kalau kamu tidak mendukung perang melawan terorisme, berarti kamu mendukung teroris.' Pernyataan ini mengandung fallacy apa?",
+                scenario: "Dalam rapat, kolega mengatakan: 'Kita harus memilih antara memotong budget marketing atau memberhentikan staff. Tidak ada pilihan lain.'",
+                context: "Perusahaan sedang mengalami kesulitan keuangan",
                 options: [
-                    "False Dilemma",
-                    "Ad Hominem",
-                    "Slippery Slope",
-                    "Appeal to Emotion"
+                    "Menerima bahwa memang hanya ada dua pilihan",
+                    "Mempertanyakan asumsi dan mengeksplorasi opsi ketiga seperti efisiensi operasional",
+                    "Memilih memotong budget karena lebih mudah",
+                    "Menyarankan memberhentikan staff yang kinerjanya kurang"
                 ],
-                correctAnswer: 0,
-                explanation: "Ini adalah <strong>False Dilemma</strong> karena hanya menyajikan dua pilihan ekstrem (mendukung perang atau mendukung teroris) dan mengabaikan posisi tengah yang mungkin."
+                scores: [0, 3, 1, 1],
+                analysis: "False Dilemma - seringkali ada lebih dari dua pilihan. Pemikir kritis menantang asumsi dan mencari alternatif."
             },
             {
-                question: "'Produk ini pasti bagus karena diendorse oleh artis terkenal.' Kesalahan logika apa ini?",
+                scenario: "Iklan di TV: '9 dari 10 dokter merekomendasikan obat ini!'",
+                context: "Iklan obat bebas yang sering ditayangkan",
                 options: [
-                    "Appeal to Authority",
-                    "Ad Hominem",
-                    "Straw Man", 
-                    "Tu Quoque"
+                    "Langsung membeli karena direkomendasikan dokter",
+                    "Mempertanyakan sample size, konteks rekomendasi, dan sponsor penelitian",
+                    "Mengabaikan karena tidak percaya iklan apapun",
+                    "Mencari tahu dokter mana saja yang merekomendasikan"
                 ],
-                correctAnswer: 0,
-                explanation: "Ini adalah <strong>Appeal to Authority</strong> karena menggunakan otoritas (artis terkenal) sebagai bukti kebenaran, tanpa bukti objektif tentang kualitas produk."
+                scores: [0, 3, 1, 2],
+                analysis: "Appeal to Authority perlu dikritisi - berapa banyak dokter yang disurvei? Dalam konteks apa? Siapa yang mensponsori?"
             },
             {
-                question: "'Saya bertemu tiga orang dari kota X dan mereka semuanya kasar. Jadi, pasti semua orang di kota X itu kasar.' Kesalahan apa ini?",
+                scenario: "Teman berkata: 'Politisi itu pasti korup. Semua politisi sama saja, hanya mencari keuntungan sendiri.'",
+                context: "Baru saja ada kasus korupsi yang melibatkan seorang politisi",
                 options: [
-                    "Hasty Generalization",
-                    "False Cause",
-                    "Straw Man",
-                    "Circular Reasoning"
+                    "Setuju, karena memang banyak kasus korupsi",
+                    "Menyatakan bahwa generalisasi seperti itu tidak akurat",
+                    "Bercanda dengan menambahkan contoh politisi korup lainnya",
+                    "Mengalihkan topik pembicaraan"
                 ],
-                correctAnswer: 0,
-                explanation: "Ini adalah <strong>Hasty Generalization</strong> karena menarik kesimpulan umum tentang seluruh populasi berdasarkan sampel yang sangat kecil dan tidak representatif."
+                scores: [0, 3, 0, 1],
+                analysis: "Hasty Generalization - menggeneralisasi seluruh kelompok berdasarkan beberapa contoh. Pemikiran kritis menghindari stereotip."
             },
             {
-                question: "'Kenapa kamu marah saya mencontek? Kamu dulu juga pernah mencontek!' Kesalahan logika apa ini?",
+                scenario: "Anda mendengar: 'Orang sukses selalu bangun jam 4 pagi. Jika ingin sukses, Anda harus melakukan hal yang sama.'",
+                context: "Motivational speaker terkenal mengatakan ini dalam seminar",
                 options: [
-                    "Tu Quoque",
-                    "Ad Hominem", 
-                    "False Dilemma",
-                    "Appeal to Emotion"
+                    "Mulai bangun jam 4 pagi besok",
+                    "Mempertanyakan bukti dan mengevaluasi apakah ini cocok dengan gaya hidup Anda",
+                    "Menganggap ini omong kosong karena Anda bukan morning person",
+                    "Menyimpulkan bahwa Anda tidak akan pernah sukses"
                 ],
-                correctAnswer: 0,
-                explanation: "Ini adalah <strong>Tu Quoque</strong> (You Too) karena membenarkan kesalahan sendiri dengan alasan orang lain juga pernah melakukan kesalahan yang sama."
-            },
-            {
-                question: "'Dukunglah produk lokal ini jika kamu mencintai tanah airmu!' Pernyataan ini menggunakan fallacy apa?",
-                options: [
-                    "Appeal to Emotion",
-                    "Ad Hominem",
-                    "False Cause", 
-                    "Straw Man"
-                ],
-                correctAnswer: 0,
-                explanation: "Ini adalah <strong>Appeal to Emotion</strong> karena membujuk dengan memanfaatkan emosi (nasionalisme) alih-alih memberikan alasan logis tentang keunggulan produk."
-            },
-            {
-                question: "'Alkitab adalah firman Tuhan karena di dalamnya tertulis bahwa itu adalah firman Tuhan.' Kesalahan logika apa ini?",
-                options: [
-                    "Circular Reasoning",
-                    "False Cause",
-                    "Appeal to Authority", 
-                    "Hasty Generalization"
-                ],
-                correctAnswer: 0,
-                explanation: "Ini adalah <strong>Circular Reasoning</strong> karena kesimpulan (Alkitab adalah firman Tuhan) sama dengan premisnya (Alkitab mengatakan itu firman Tuhan)."
+                scores: [1, 3, 1, 0],
+                analysis: "Post Hoc fallacy - mengasumsikan A menyebabkan B hanya karena berkorelasi. Kesuksesan dipengaruhi banyak faktor, bukan hanya bangun pagi."
             }
         ];
 
         // State kuis
         let currentQuestionIndex = 0;
-        let userAnswers = Array(quizQuestions.length).fill(null);
-        let score = 0;
+        let userAnswers = Array(quizScenarios.length).fill(null);
+        let totalScore = 0;
 
         // Fungsi untuk memulai kuis
         function startQuiz() {
             currentQuestionIndex = 0;
-            userAnswers = Array(quizQuestions.length).fill(null);
-            score = 0;
+            userAnswers = Array(quizScenarios.length).fill(null);
+            totalScore = 0;
             showScreen('quiz-screen');
             loadQuestion();
         }
@@ -497,25 +527,25 @@
 
         // Fungsi untuk memuat pertanyaan
         function loadQuestion() {
-            const question = quizQuestions[currentQuestionIndex];
+            const scenario = quizScenarios[currentQuestionIndex];
             
             // Update info kuis
             document.getElementById('current-question').textContent = currentQuestionIndex + 1;
-            document.getElementById('total-questions').textContent = quizQuestions.length;
-            document.getElementById('current-score').textContent = score;
+            document.getElementById('total-questions').textContent = quizScenarios.length;
             
             // Update progress bar
-            const progressPercentage = ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
+            const progressPercentage = ((currentQuestionIndex + 1) / quizScenarios.length) * 100;
             document.getElementById('quiz-progress').style.width = `${progressPercentage}%`;
             
-            // Tampilkan pertanyaan
-            document.getElementById('question-text').textContent = question.question;
+            // Tampilkan skenario
+            document.getElementById('scenario-text').textContent = scenario.scenario;
+            document.getElementById('scenario-context').textContent = scenario.context;
             
             // Tampilkan opsi jawaban
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
             
-            question.options.forEach((option, index) => {
+            scenario.options.forEach((option, index) => {
                 const optionElement = document.createElement('div');
                 optionElement.className = 'option';
                 if (userAnswers[currentQuestionIndex] === index) {
@@ -529,7 +559,7 @@
             // Update tombol navigasi
             document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
             
-            if (currentQuestionIndex === quizQuestions.length - 1) {
+            if (currentQuestionIndex === quizScenarios.length - 1) {
                 document.getElementById('next-btn').style.display = 'none';
                 document.getElementById('submit-btn').style.display = 'block';
             } else {
@@ -554,7 +584,7 @@
 
         // Fungsi untuk pertanyaan berikutnya
         function nextQuestion() {
-            if (currentQuestionIndex < quizQuestions.length - 1) {
+            if (currentQuestionIndex < quizScenarios.length - 1) {
                 currentQuestionIndex++;
                 loadQuestion();
             }
@@ -570,51 +600,94 @@
 
         // Fungsi untuk submit kuis
         function submitQuiz() {
-            // Hitung skor
-            score = 0;
-            quizQuestions.forEach((question, index) => {
-                if (userAnswers[index] === question.correctAnswer) {
-                    score++;
+            // Hitung skor total
+            totalScore = 0;
+            let maxPossibleScore = 0;
+            
+            quizScenarios.forEach((scenario, index) => {
+                if (userAnswers[index] !== null) {
+                    totalScore += scenario.scores[userAnswers[index]];
                 }
+                maxPossibleScore += 3; // Skor maksimal per pertanyaan adalah 3
             });
             
+            // Konversi ke persentase
+            const percentage = Math.round((totalScore / maxPossibleScore) * 100);
+            
             // Tampilkan hasil
-            showResults();
+            showResults(percentage);
         }
 
         // Fungsi untuk menampilkan hasil
-        function showResults() {
+        function showResults(percentage) {
             // Update elemen hasil
-            document.getElementById('final-score-circle').textContent = `${score}/${quizQuestions.length}`;
-            document.getElementById('score-text').textContent = `Anda menjawab ${score} dari ${quizQuestions.length} pertanyaan dengan benar`;
+            document.getElementById('final-score').textContent = `${percentage}%`;
             
-            // Berikan feedback berdasarkan skor
-            const feedbackElement = document.getElementById('feedback-message');
-            if (score >= 8) {
-                feedbackElement.className = 'feedback good';
-                feedbackElement.innerHTML = '<h3>🎉 Excellent! 🎉</h3><p>Anda memiliki kemampuan berpikir kritis yang sangat baik! Anda jarang terjebak dalam kesesatan logika.</p>';
-            } else if (score >= 5) {
-                feedbackElement.className = 'feedback average';
-                feedbackElement.innerHTML = '<h3>👍 Good Job!</h3><p>Kemampuan Anda cukup baik, tetapi masih perlu berlatih untuk mengenali beberapa jenis fallacy.</p>';
+            // Tentukan tipe kepribadian berpikir
+            let personalityTitle, personalityDescription, feedbackClass, feedbackMessage;
+            
+            if (percentage >= 80) {
+                personalityTitle = "🔍 Pemikir Kritis Andal";
+                personalityDescription = "Anda memiliki kemampuan berpikir kritis yang sangat baik! Anda jarang terjebak dalam fallacy logika dan selalu mencari bukti sebelum mengambil keputusan.";
+                feedbackClass = "good";
+                feedbackMessage = "Kekuatan Anda: skeptisisme sehat, analisis mendalam, dan menghindari generalisasi.";
+            } else if (percentage >= 60) {
+                personalityTitle = "💭 Pemikir Sadar Diri";
+                personalityDescription = "Anda memiliki dasar berpikir kritis yang baik, tetapi kadang masih terpengaruh oleh bias atau emosi. Teruslah berlatih!";
+                feedbackClass = "average";
+                feedbackMessage = "Anda sudah di jalur yang benar. Tingkatkan dengan lebih banyak mempertanyakan asumsi.";
+            } else if (percentage >= 40) {
+                personalityTitle = "🌱 Pemikir Berkembang";
+                personalityDescription = "Anda mulai mengembangkan kesadaran akan pentingnya berpikir kritis, tetapi masih sering terjebak pola pikir konvensional.";
+                feedbackClass = "average";
+                feedbackMessage = "Tips: cobalah selalu mencari perspektif alternatif sebelum mengambil keputusan.";
             } else {
-                feedbackElement.className = 'feedback poor';
-                feedbackElement.innerHTML = '<h3>📚 Perlu Belajar Lagi</h3><p>Anda perlu mempelajari lebih dalam tentang logical fallacy. Terus berlatih!</p>';
+                personalityTitle = "🧭 Pemikir Potensial";
+                personalityDescription = "Anda memiliki potensi untuk menjadi pemikir kritis! Saatnya belajar mengenali pola pikir yang menyesatkan.";
+                feedbackClass = "poor";
+                feedbackMessage = "Mulailah dengan mempertanyakan informasi yang diterima, terutama yang sesuai dengan keyakinan Anda.";
             }
+            
+            document.getElementById('personality-title').textContent = personalityTitle;
+            document.getElementById('personality-description').textContent = personalityDescription;
+            
+            const feedbackElement = document.getElementById('feedback-message');
+            feedbackElement.className = `feedback ${feedbackClass}`;
+            feedbackElement.innerHTML = `<h3>Analisis Pola Pikir Anda:</h3><p>${feedbackMessage}</p>`;
+            
+            // Generate thinking tips
+            const tipsContent = document.getElementById('thinking-tips-content');
+            tipsContent.innerHTML = `
+                <ul>
+                    <li><strong>Selalu tanya "Apa buktinya?"</strong> sebelum menerima informasi</li>
+                    <li><strong>Cari perspektif alternatif</strong> untuk menghindari confirmation bias</li>
+                    <li><strong>Bedakan antara korelasi dan kausalitas</strong> - dua hal yang terjadi bersamaan belum pasti saling menyebabkan</li>
+                    <li><strong>Waspada terhadap generalisasi</strong> berdasarkan contoh terbatas</li>
+                    <li><strong>Evaluasi sumber informasi</strong> - siapa yang mengatakan dan apa kepentingannya?</li>
+                </ul>
+            `;
             
             // Tampilkan detail hasil
             const resultsDetails = document.getElementById('results-details');
-            resultsDetails.innerHTML = '<h3>Detail Jawaban:</h3>';
+            resultsDetails.innerHTML = '<h3>Detail Analisis Skenario:</h3>';
             
-            quizQuestions.forEach((question, index) => {
-                const isCorrect = userAnswers[index] === question.correctAnswer;
+            quizScenarios.forEach((scenario, index) => {
+                const userAnswerIndex = userAnswers[index];
+                const userScore = userAnswerIndex !== null ? scenario.scores[userAnswerIndex] : 0;
+                const maxScore = 3;
+                
                 const resultItem = document.createElement('div');
-                resultItem.className = `result-item ${isCorrect ? 'correct' : 'incorrect'}`;
+                resultItem.className = 'result-item';
                 
                 resultItem.innerHTML = `
-                    <p><strong>Pertanyaan ${index + 1}:</strong> ${question.question}</p>
-                    <p><strong>Jawaban Anda:</strong> ${userAnswers[index] !== null ? question.options[userAnswers[index]] : 'Tidak dijawab'}</p>
-                    <p><strong>Jawaban Benar:</strong> ${question.options[question.correctAnswer]}</p>
-                    <div class="explanation">${question.explanation}</div>
+                    <p><strong>Skenario ${index + 1}:</strong> ${scenario.scenario}</p>
+                    <p><strong>Respons Anda:</strong> ${userAnswerIndex !== null ? scenario.options[userAnswerIndex] : 'Tidak dijawab'} 
+                    <span style="float: right; background: ${userScore === maxScore ? '#28a745' : userScore >= 1 ? '#ffc107' : '#dc3545'}; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">
+                        ${userScore}/${maxScore}
+                    </span></p>
+                    <div class="explanation" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                        <strong>Analisis:</strong> ${scenario.analysis}
+                    </div>
                 `;
                 
                 resultsDetails.appendChild(resultItem);
