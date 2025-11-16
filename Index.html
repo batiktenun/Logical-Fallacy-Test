@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logical Fallacy Test - Apakah kamu bisa lolos dari Logical Fallacy?</title>
     <style>
-        /* CSS tetap sama seperti sebelumnya */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -132,7 +131,6 @@
         .option:hover {
             background: #f1f8ff;
             border-color: #3498db;
-            transform: translateY(-2px);
         }
 
         .option.selected {
@@ -291,39 +289,6 @@
             text-align: left;
             border-left: 4px solid #ffc107;
         }
-
-        .difficulty-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-
-        .difficulty-easy {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .difficulty-medium {
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        .difficulty-hard {
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .session-info {
-            background: #e8f4fc;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
     </style>
 </head>
 <body>
@@ -332,7 +297,7 @@
             <h1>🧠 Logical Fallacy Test</h1>
             <p class="subtitle">Uji kemampuanmu dalam menghindari jebakan kesesatan logika</p>
             <div class="disclaimer">
-                ⚠️ Hati-hati! Jawaban yang tepat tidak selalu jelas - butuh pemikiran mendalam
+                ⚠️ Pilih jawaban yang PALING menghindari logical fallacy
             </div>
         </header>
 
@@ -340,24 +305,24 @@
         <section id="start-screen" class="screen active">
             <div class="start-screen">
                 <h2>Apakah kamu bisa lolos dari Logical Fallacy?</h2>
-                <p>Tes yang lebih menantang dengan skenario ambigu dan pilihan yang lebih sulit!</p>
+                <p>Tes ini akan menguji kemampuanmu mengenali dan menghindari kesesatan logika dalam argumen sehari-hari.</p>
                 
                 <div class="feature-list">
-                    <h3>Tantangan Baru:</h3>
+                    <h3>Apa yang akan kamu hadapi:</h3>
                     <ul>
-                        <li>🎯 <strong>Skenario Ambigu</strong> - Tidak selalu ada jawaban "paling benar"</li>
-                        <li>⚖️ <strong>Pilihan Berimbang</strong> - Distribusi jawaban yang adil</li>
-                        <li>🧩 <strong>Kasus Nyata Kompleks</strong> - Mirip dilema di kehidupan sehari-hari</li>
-                        <li>🔍 <strong>Analisis Mendalam</strong> - Penjelasan yang tidak hitam-putih</li>
+                        <li>🎯 10 skenario menantang dari kehidupan nyata</li>
+                        <li>🧩 Pilihan jawaban yang seimbang dan tidak mudah ditebak</li>
+                        <li>📊 Analisis mendalam tentang pola pikirmu</li>
+                        <li>💡 Tips untuk meningkatkan kemampuan berpikir kritis</li>
                     </ul>
                 </div>
 
                 <div class="psychological-insight">
-                    <strong>💡 Tantangan Sebenarnya:</strong> Dalam kehidupan nyata, logical fallacy sering tersembunyi dalam argumen yang terdengar masuk akal. Tes ini mensimulasikan kompleksitas tersebut.
+                    <strong>💡 Fakta Menarik:</strong> 90% orang terjebak minimal 3 logical fallacy dalam percakapan sehari-hari tanpa menyadarinya.
                 </div>
 
                 <div style="margin-top: 30px;">
-                    <button onclick="startQuiz()">🎯 Mulai Tes Yang Lebih Menantang!</button>
+                    <button onclick="startQuiz()">🎯 Mulai Tes Sekarang!</button>
                 </div>
             </div>
         </section>
@@ -365,20 +330,17 @@
         <!-- Quiz Screen -->
         <section id="quiz-screen" class="screen">
             <div class="quiz-info">
-                <div>Skenario <span id="current-question">1</span> dari <span id="total-questions">8</span></div>
-                <div>Level: <span id="current-difficulty">Medium</span></div>
+                <div>Pertanyaan <span id="current-question">1</span> dari <span id="total-questions">10</span></div>
+                <div>Tes Logical Fallacy</div>
             </div>
 
             <div class="progress-bar">
-                <div class="progress" id="quiz-progress" style="width: 12.5%;"></div>
+                <div class="progress" id="quiz-progress" style="width: 10%;"></div>
             </div>
 
             <div class="scenario-container">
                 <div class="scenario-text" id="scenario-text">Memuat skenario...</div>
                 <div class="context" id="scenario-context"></div>
-                <div style="margin-top: 10px; text-align: right;">
-                    <span class="difficulty-badge" id="difficulty-badge">Medium</span>
-                </div>
             </div>
 
             <h3>Manakah respons yang PALING menghindari logical fallacy?</h3>
@@ -415,7 +377,7 @@
                 </div>
 
                 <div class="thinking-tips">
-                    <h3>🔧 Tips untuk Level Berikutnya:</h3>
+                    <h3>🔧 Tips Meningkatkan Kemampuan Berpikir:</h3>
                     <div id="thinking-tips-content"></div>
                 </div>
 
@@ -424,7 +386,7 @@
                 </div>
 
                 <div style="margin-top: 30px;">
-                    <button onclick="restartQuiz()">🔄 Coba Tes Lain (Soal Berbeda)</button>
+                    <button onclick="restartQuiz()">🔄 Ulangi Tes</button>
                     <button onclick="showStartScreen()" class="secondary">🏠 Kembali ke Menu</button>
                 </div>
             </div>
@@ -436,20 +398,19 @@
     </footer>
 
     <script>
-        // BANK SOAL YANG LEBIH MENANTANG DAN SEIMBANG
+        // BANK SOAL YANG LEBIH SEIMBANG
         const questionBank = [
             {
                 scenario: "Seorang influencer berkata: 'Produk ini digunakan oleh 95% artis Hollywood! Pasti efektif.'",
                 context: "Postingan sponsor dengan 2 juta likes",
                 options: [
                     "Langsung membeli karena buktinya jelas dari artis ternama",
-                    "Mencari penelitian independen tentang efektivitas produk",
+                    "Mencari penelitian independen tentang efektivitas produk", 
                     "Mengabaikan karena tidak percaya artis Hollywood",
                     "Mempertanyakan sampel survei dan konteks rekomendasi"
                 ],
-                scores: [0, 2, 1, 3], // Jawaban terbaik di D
-                analysis: "Meskipun mencari penelitian independen baik, mempertanyakan metodologi survei lebih langsung mengatasi <strong>Appeal to Authority</strong>. Sampel '95%' bisa misleading tanpa konteks.",
-                difficulty: "medium",
+                correctAnswer: 3,
+                analysis: "Ini adalah <strong>Appeal to Authority</strong>. Mempertanyakan metodologi survei lebih langsung mengatasi fallacy dibanding hanya mencari penelitian lain.",
                 fallacy: "Appeal to Authority"
             },
             {
@@ -457,13 +418,12 @@
                 context: "Percakapan saat musim dingin yang unusually cold",
                 options: [
                     "Setuju, pengalaman pribadi lebih bisa dipercaya",
-                    "Menjelaskan perbedaan cuaca harian vs tren iklim 30 tahun",
+                    "Menjelaskan perbedaan cuaca harian vs tren iklim jangka panjang",
                     "Menyebut lawan bicara tidak paham sains",
                     "Mencari data suhu rata-rata global 10 tahun terakhir"
                 ],
-                scores: [0, 3, 0, 2], // Jawaban terbaik di B
-                analysis: "Penjelasan konseptual tentang perbedaan cuaca dan iklim paling efektif melawan <strong>Hasty Generalization</strong>. Data spesifik juga baik tapi butuh waktu lebih.",
-                difficulty: "easy",
+                correctAnswer: 1,
+                analysis: "Ini adalah <strong>Hasty Generalization</strong>. Penjelasan konseptual tentang perbedaan cuaca dan iklim paling efektif melawan fallacy ini.",
                 fallacy: "Hasty Generalization"
             },
             {
@@ -472,12 +432,11 @@
                 options: [
                     "Menerima karena manajer lebih berpengalaman",
                     "Menganalisis semua faktor penyebab kegagalan",
-                    "Mengusulkan sistem reward, bukan punishment",
+                    "Mengusulkan sistem reward, bukan punishment", 
                     "Meminta evaluasi proses dan komunikasi tim"
                 ],
-                scores: [0, 3, 2, 2], // Jawaban terbaik di B
-                analysis: "<strong>Oversimplification</strong> sering terjadi. Analisis komprehensif lebih baik daripada langsung menerima solusi simplistik.",
-                difficulty: "hard",
+                correctAnswer: 1,
+                analysis: "Ini adalah <strong>Oversimplification</strong>. Analisis komprehensif lebih baik daripada langsung menerima solusi simplistik.",
                 fallacy: "Oversimplification"
             },
             {
@@ -489,9 +448,8 @@
                     "Mempertanyakan variabel ketiga (musim panas)",
                     "Menganggap berita ini clickbait tidak berguna"
                 ],
-                scores: [0, 0, 3, 1], // Jawaban terbaik di C
+                correctAnswer: 2,
                 analysis: "Klasik <strong>Correlation vs Causation</strong>. Mempertanyakan variabel ketiga adalah pendekatan ilmiah yang tepat.",
-                difficulty: "medium",
                 fallacy: "False Cause"
             },
             {
@@ -499,13 +457,12 @@
                 context: "Perusahaan startup sedang burn rate tinggi",
                 options: [
                     "Menerima dikotomi dan memilih yang lesser evil",
-                    "Menolak dikotomi dan mengeksplorasi efisiensi operasional",
+                    "Menolak dikotomi dan mengeksplorasi efisiensi operasional", 
                     "Meminta data detail sebelum memutuskan",
                     "Mengusulkan reduksi gaji sementara semua level"
                 ],
-                scores: [0, 3, 2, 2], // Jawaban terbaik di B
+                correctAnswer: 1,
                 analysis: "<strong>False Dilemma</strong> - selalu ada opsi ketiga. Menolak premis palsu adalah langkah pertama.",
-                difficulty: "hard",
                 fallacy: "False Dilemma"
             },
             {
@@ -517,9 +474,8 @@
                     "Mempertanyakan representativitas sampel",
                     "Mencari tahu apakah dokter-dokter itu independen"
                 ],
-                scores: [0, 2, 3, 2], // Jawaban terbaik di C
+                correctAnswer: 2,
                 analysis: "<strong>Biased Sample</strong>. Mempertanyakan representativitas lebih fundamental daripada hanya mengabaikan.",
-                difficulty: "medium",
                 fallacy: "Biased Sample"
             },
             {
@@ -531,9 +487,8 @@
                     "Mempertanyakan bukti kausal dan keberagaman jalan sukses",
                     "Mencari contoh orang sukses dengan jadwal berbeda"
                 ],
-                scores: [0, 1, 3, 2], // Jawaban terbaik di C
+                correctAnswer: 2,
                 analysis: "<strong>Post Hoc Fallacy</strong>. Mempertanyakan hubungan kausal lebih penting daripada mencari counter-example.",
-                difficulty: "hard",
                 fallacy: "False Cause"
             },
             {
@@ -542,12 +497,11 @@
                 options: [
                     "Setuju dan lanjutkan kampanye",
                     "Meminta bukti produk kita lulus tes yang sama",
-                    "Mempertanyakan relevansi tes tersebut",
+                    "Mempertanyakan relevansi tes tersebut", 
                     "Mengevaluasi keunggulan produk secara objektif"
                 ],
-                scores: [0, 2, 2, 3], // Jawaban terbaik di D
+                correctAnswer: 3,
                 analysis: "<strong>Relative Privation</strong>. Kegagalan orang lain tidak membuktikan keberhasilan kita. Evaluasi objektif diperlukan.",
-                difficulty: "medium",
                 fallacy: "Relative Privation"
             },
             {
@@ -559,9 +513,8 @@
                     "Meminta data siapa saja yang setuju",
                     "Menganggap ini sebagai social proof yang valid"
                 ],
-                scores: [0, 3, 2, 1], // Jawaban terbaik di B
+                correctAnswer: 1,
                 analysis: "<strong>Bandwagon Fallacy</strong> dengan <strong>Hasty Generalization</strong>. Mempertanyakan metodologi adalah kunci.",
-                difficulty: "easy",
                 fallacy: "Bandwagon + Hasty Generalization"
             },
             {
@@ -570,72 +523,25 @@
                 options: [
                     "Setuju, suara rakyat adalah suara Tuhan",
                     "Mempertanyakan kualitas argumen pendukung",
-                    "Melihat data efektivitas program serupa di tempat lain",
+                    "Melihat data efektivitas program serupa di tempat lain", 
                     "Memeriksa apakah kritik juga mendapat platform yang sama"
                 ],
-                scores: [0, 2, 3, 2], // Jawaban terbaik di C
+                correctAnswer: 2,
                 analysis: "<strong>Argumentum ad Populum</strong>. Popularitas tidak sama dengan kebenaran. Bukti empiris lebih penting.",
-                difficulty: "hard",
                 fallacy: "Argumentum ad Populum"
-            },
-            {
-                scenario: "'Ahli ekonomi A mendukung kebijakan X, sementara ahli B menolak. Saya pilih yang sejalan dengan keyakinan saya.'",
-                context: "Diskusi kebijakan kontroversial",
-                options: [
-                    "Mengikuti ahli yang paling terkenal",
-                    "Memilih yang sesuai nilai personal",
-                    "Menganalisis argumen kedua belah pihak secara objektif",
-                    "Mencari konsensus di antara para ahli"
-                ],
-                scores: [0, 1, 3, 2], // Jawaban terbaik di C
-                analysis: "<strong>Confirmation Bias</strong>. Analisis objektif mengatasi bias untuk mencari yang sesuai keyakinan.",
-                difficulty: "hard",
-                fallacy: "Confirmation Bias"
-            },
-            {
-                scenario: "'Produk ini 100% alami, jadi pasti aman dan efektif.'",
-                context: "Iklan suplemen kesehatan",
-                options: [
-                    "Percaya karena bahan alami selalu baik",
-                    "Mempertanyakan bukti efektivitas klinis",
-                    "Mencari tahu dosis dan potensi efek samping",
-                    "Menganggap sama dengan produk sintetis"
-                ],
-                scores: [0, 2, 3, 1], // Jawaban terbaik di C
-                analysis: "<strong>Naturalistic Fallacy</strong>. 'Alami' tidak sama dengan 'aman'. Evaluasi komprehensif diperlukan.",
-                difficulty: "medium",
-                fallacy: "Naturalistic Fallacy"
             }
         ];
 
         // State kuis
         let currentQuestionIndex = 0;
-        let userAnswers = [];
-        let totalScore = 0;
-        let currentSessionQuestions = [];
-
-        // Fungsi untuk memilih soal acak - sekarang dengan distribusi yang lebih seimbang
-        function selectRandomQuestions() {
-            const shuffled = [...questionBank].sort(() => 0.5 - Math.random());
-            
-            // Distribusi seimbang: 3 easy, 4 medium, 3 hard
-            const easyQuestions = shuffled.filter(q => q.difficulty === "easy").slice(0, 3);
-            const mediumQuestions = shuffled.filter(q => q.difficulty === "medium").slice(0, 4);
-            const hardQuestions = shuffled.filter(q => q.difficulty === "hard").slice(0, 3);
-            
-            const selected = [...easyQuestions, ...mediumQuestions, ...hardQuestions];
-            
-            // Acak urutan pertanyaan
-            return selected.sort(() => 0.5 - Math.random());
-        }
+        let userAnswers = Array(questionBank.length).fill(null);
+        let score = 0;
 
         // Fungsi untuk memulai kuis
         function startQuiz() {
-            currentSessionQuestions = selectRandomQuestions();
             currentQuestionIndex = 0;
-            userAnswers = Array(currentSessionQuestions.length).fill(null);
-            totalScore = 0;
-            
+            userAnswers = Array(questionBank.length).fill(null);
+            score = 0;
             showScreen('quiz-screen');
             loadQuestion();
         }
@@ -650,54 +556,39 @@
 
         // Fungsi untuk memuat pertanyaan
         function loadQuestion() {
-            const question = currentSessionQuestions[currentQuestionIndex];
+            const question = questionBank[currentQuestionIndex];
             
             // Update info kuis
             document.getElementById('current-question').textContent = currentQuestionIndex + 1;
-            document.getElementById('total-questions').textContent = currentSessionQuestions.length;
-            document.getElementById('current-difficulty').textContent = question.difficulty.charAt(0).toUpperCase() + question.difficulty.slice(1);
+            document.getElementById('total-questions').textContent = questionBank.length;
             
             // Update progress bar
-            const progressPercentage = ((currentQuestionIndex + 1) / currentSessionQuestions.length) * 100;
+            const progressPercentage = ((currentQuestionIndex + 1) / questionBank.length) * 100;
             document.getElementById('quiz-progress').style.width = `${progressPercentage}%`;
             
             // Tampilkan skenario
             document.getElementById('scenario-text').textContent = question.scenario;
             document.getElementById('scenario-context').textContent = question.context;
             
-            // Update difficulty badge
-            const badge = document.getElementById('difficulty-badge');
-            badge.textContent = question.difficulty.charAt(0).toUpperCase() + question.difficulty.slice(1);
-            badge.className = `difficulty-badge difficulty-${question.difficulty}`;
-            
-            // Tampilkan opsi jawaban - DENGAN PENGACAKAN URUTAN
+            // Tampilkan opsi jawaban - TANPA PENGACAKAN agar konsisten
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
             
-            // Acak urutan opsi tapi pertahankan mapping scores
-            const optionsWithScores = question.options.map((option, index) => ({
-                option,
-                score: question.scores[index],
-                originalIndex: index
-            }));
-            
-            const shuffledOptions = optionsWithScores.sort(() => 0.5 - Math.random());
-            
-            shuffledOptions.forEach((item, displayIndex) => {
+            question.options.forEach((option, index) => {
                 const optionElement = document.createElement('div');
                 optionElement.className = 'option';
-                if (userAnswers[currentQuestionIndex] === item.originalIndex) {
+                if (userAnswers[currentQuestionIndex] === index) {
                     optionElement.classList.add('selected');
                 }
-                optionElement.textContent = item.option;
-                optionElement.onclick = () => selectOption(item.originalIndex);
+                optionElement.textContent = option;
+                optionElement.onclick = () => selectOption(index);
                 optionsContainer.appendChild(optionElement);
             });
             
             // Update tombol navigasi
             document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
             
-            if (currentQuestionIndex === currentSessionQuestions.length - 1) {
+            if (currentQuestionIndex === questionBank.length - 1) {
                 document.getElementById('next-btn').style.display = 'none';
                 document.getElementById('submit-btn').style.display = 'block';
             } else {
@@ -706,36 +597,24 @@
             }
         }
 
-        // Fungsi untuk memilih opsi
-        function selectOption(originalIndex) {
-            userAnswers[currentQuestionIndex] = originalIndex;
+        // Fungsi untuk memilih opsi - DIPERBAIKI
+        function selectOption(optionIndex) {
+            // Hanya pilih satu jawaban
+            userAnswers[currentQuestionIndex] = optionIndex;
             
-            // Update tampilan opsi yang dipilih
+            // Update tampilan - hanya satu yang terpilih
             const options = document.querySelectorAll('.option');
             options.forEach((option, index) => {
                 option.classList.remove('selected');
-            });
-            
-            // Karena opsi diacak, kita perlu mencari opsi yang sesuai dengan originalIndex
-            const question = currentSessionQuestions[currentQuestionIndex];
-            const optionsWithScores = question.options.map((option, index) => ({
-                option,
-                score: question.scores[index],
-                originalIndex: index
-            }));
-            
-            const shuffledOptions = optionsWithScores.sort(() => 0.5 - Math.random());
-            
-            shuffledOptions.forEach((item, displayIndex) => {
-                if (item.originalIndex === originalIndex) {
-                    options[displayIndex].classList.add('selected');
+                if (index === optionIndex) {
+                    option.classList.add('selected');
                 }
             });
         }
 
         // Fungsi untuk pertanyaan berikutnya
         function nextQuestion() {
-            if (currentQuestionIndex < currentSessionQuestions.length - 1) {
+            if (currentQuestionIndex < questionBank.length - 1) {
                 currentQuestionIndex++;
                 loadQuestion();
             }
@@ -751,26 +630,22 @@
 
         // Fungsi untuk submit kuis
         function submitQuiz() {
-            // Hitung skor total
-            totalScore = 0;
-            let maxPossibleScore = 0;
-            
-            currentSessionQuestions.forEach((question, index) => {
-                if (userAnswers[index] !== null) {
-                    totalScore += question.scores[userAnswers[index]];
+            // Hitung skor
+            score = 0;
+            questionBank.forEach((question, index) => {
+                if (userAnswers[index] === question.correctAnswer) {
+                    score++;
                 }
-                maxPossibleScore += 3; // Skor maksimal per pertanyaan adalah 3
             });
             
-            // Konversi ke persentase
-            const percentage = Math.round((totalScore / maxPossibleScore) * 100);
-            
             // Tampilkan hasil
-            showResults(percentage);
+            showResults();
         }
 
         // Fungsi untuk menampilkan hasil
-        function showResults(percentage) {
+        function showResults() {
+            const percentage = Math.round((score / questionBank.length) * 100);
+            
             // Update elemen hasil
             document.getElementById('final-score').textContent = `${percentage}%`;
             
@@ -779,29 +654,24 @@
             
             if (percentage >= 80) {
                 personalityTitle = "🔍 Master Logical Thinker";
-                personalityDescription = "Luar biasa! Kamu mampu mendeteksi fallacy tersembunyi dalam argumen kompleks.";
+                personalityDescription = "Luar biasa! Kamu hampir selalu lolos dari jebakan logical fallacy.";
                 feedbackClass = "good";
-                feedbackMessage = "Kemampuan analisismu sangat tajam dalam mengidentifikasi nuansa logical fallacy.";
-            } else if (percentage >= 65) {
+                feedbackMessage = "Kemampuan analisismu sangat tajam dalam mengidentifikasi fallacy tersembunyi.";
+            } else if (percentage >= 60) {
                 personalityTitle = "💭 Advanced Critical Thinker";
-                personalityDescription = "Bagus sekali! Kamu memiliki pemahaman mendalam tentang logical fallacy.";
+                personalityDescription = "Bagus sekali! Kamu memiliki pemahaman yang solid tentang logical fallacy.";
                 feedbackClass = "good";
-                feedbackMessage = "Kamu hanya perlu sedikit penyempurnaan dalam kasus-kasus yang sangat ambigu.";
-            } else if (percentage >= 50) {
+                feedbackMessage = "Hanya perlu sedikit penyempurnaan dalam kasus-kasus yang ambigu.";
+            } else if (percentage >= 40) {
                 personalityTitle = "🌱 Developing Analyst";
                 personalityDescription = "Solid! Kamu memahami dasar-dasar logical fallacy dengan baik.";
                 feedbackClass = "average";
                 feedbackMessage = "Tingkatkan dengan lebih banyak berlatih pada kasus-kasus kompleks.";
-            } else if (percentage >= 35) {
-                personalityTitle = "🧭 Aware Thinker";
-                personalityDescription = "Kamu mulai aware dengan logical fallacy! Terus belajar.";
-                feedbackClass = "average";
-                feedbackMessage = "Fokus pada memahami konteks dan asumsi tersembunyi dalam argumen.";
             } else {
-                personalityTitle = "🚀 Potential Logical Mind";
-                personalityDescription = "Setiap perjalanan dimulai dengan langkah pertama! Terus berlatih.";
+                personalityTitle = "🧭 Logical Thinker in Progress";
+                personalityDescription = "Setiap perjalanan dimulai dengan langkah pertama! Terus belajar.";
                 feedbackClass = "poor";
-                feedbackMessage = "Mulailah dengan mempertanyakan klaim-klaim yang terdengar 'terlalu bagus untuk menjadi kenyataan'.";
+                feedbackMessage = "Fokus pada memahami konteks dan asumsi tersembunyi dalam argumen.";
             }
             
             document.getElementById('personality-title').textContent = personalityTitle;
@@ -815,9 +685,9 @@
             const tipsContent = document.getElementById('thinking-tips-content');
             tipsContent.innerHTML = `
                 <ul>
-                    <li><strong>Selalu tanya "Apa buktinya?" dan "Apa asumsinya?"</strong></li>
-                    <li><strong>Cari variabel ketiga</strong> dalam hubungan korelasi</li>
-                    <li><strong>Waspada terhadap dikotomi palsu</strong> - biasanya selalu ada opsi ketiga</li>
+                    <li><strong>Selalu tanya "Apa buktinya?" sebelum menerima klaim</strong></li>
+                    <li><strong>Cari variabel ketiga dalam hubungan korelasi</strong></li>
+                    <li><strong>Waspada terhadap dikotomi palsu</strong> - biasanya ada opsi ketiga</li>
                     <li><strong>Evaluasi sampel dan metodologi</strong> dalam klaim statistik</li>
                     <li><strong>Bedakan antara popularitas dan validitas</strong></li>
                 </ul>
@@ -825,26 +695,20 @@
             
             // Tampilkan detail hasil
             const resultsDetails = document.getElementById('results-details');
-            resultsDetails.innerHTML = '<h3>Detail Analisis Skenario:</h3>';
+            resultsDetails.innerHTML = '<h3>Detail Jawaban:</h3>';
             
-            currentSessionQuestions.forEach((question, index) => {
-                const userAnswerIndex = userAnswers[index];
-                const userScore = userAnswerIndex !== null ? question.scores[userAnswerIndex] : 0;
-                const maxScore = 3;
+            questionBank.forEach((question, index) => {
+                const isCorrect = userAnswers[index] === question.correctAnswer;
+                const userAnswerText = userAnswers[index] !== null ? question.options[userAnswers[index]] : 'Tidak dijawab';
+                const correctAnswerText = question.options[question.correctAnswer];
                 
                 const resultItem = document.createElement('div');
-                resultItem.className = 'result-item';
+                resultItem.className = `result-item ${isCorrect ? 'correct' : 'incorrect'}`;
                 
                 resultItem.innerHTML = `
-                    <p><strong>Skenario ${index + 1}</strong> 
-                    <span class="difficulty-badge difficulty-${question.difficulty}" style="margin-left: 10px;">
-                        ${question.difficulty.charAt(0).toUpperCase() + question.difficulty.slice(1)}
-                    </span>
-                    <span style="float: right; background: ${userScore === maxScore ? '#28a745' : userScore >= 2 ? '#ffc107' : '#dc3545'}; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">
-                        ${userScore}/${maxScore}
-                    </span></p>
-                    <p><em>${question.scenario}</em></p>
-                    <p><strong>Respons Kamu:</strong> ${userAnswerIndex !== null ? question.options[userAnswerIndex] : 'Tidak dijawab'}</p>
+                    <p><strong>Pertanyaan ${index + 1}:</strong> ${question.scenario}</p>
+                    <p><strong>Jawaban Kamu:</strong> ${userAnswerText} ${isCorrect ? '✅' : '❌'}</p>
+                    <p><strong>Jawaban Terbaik:</strong> ${correctAnswerText}</p>
                     <div class="explanation" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
                         <strong>Jenis Fallacy:</strong> ${question.fallacy}<br>
                         <strong>Analisis:</strong> ${question.analysis}
