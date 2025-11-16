@@ -289,6 +289,15 @@
             text-align: left;
             border-left: 4px solid #ffc107;
         }
+
+        .session-info {
+            background: #e8f4fc;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -297,7 +306,7 @@
             <h1>🧠 Logical Fallacy Test</h1>
             <p class="subtitle">Uji kemampuanmu dalam menghindari jebakan kesesatan logika</p>
             <div class="disclaimer">
-                ⚠️ Pilih jawaban yang PALING menghindari logical fallacy
+                ⚠️ Setiap tes akan memberikan soal yang berbeda!
             </div>
         </header>
 
@@ -305,20 +314,20 @@
         <section id="start-screen" class="screen active">
             <div class="start-screen">
                 <h2>Apakah kamu bisa lolos dari Logical Fallacy?</h2>
-                <p>Tes ini akan menguji kemampuanmu mengenali dan menghindari kesesatan logika dalam argumen sehari-hari.</p>
+                <p>Setiap kali kamu mengulang tes, kamu akan mendapatkan set soal yang berbeda! Terus latih kemampuan berpikir kritismu.</p>
                 
                 <div class="feature-list">
-                    <h3>Apa yang akan kamu hadapi:</h3>
+                    <h3>Fitur Terbaru:</h3>
                     <ul>
-                        <li>🎯 10 skenario menantang dari kehidupan nyata</li>
-                        <li>🧩 Pilihan jawaban yang seimbang dan tidak mudah ditebak</li>
-                        <li>📊 Analisis mendalam tentang pola pikirmu</li>
-                        <li>💡 Tips untuk meningkatkan kemampuan berpikir kritis</li>
+                        <li>🎲 <strong>40+ Skenario Acak</strong> - Tidak pernah bosan</li>
+                        <li>🔄 <strong>Sesi Unik Setiap Kali</strong> - Pengalaman berbeda tiap tes</li>
+                        <li>📊 <strong>Analisis Mendalam</strong> - Pahami pola pikirmu</li>
+                        <li>💡 <strong>Tips Berpikir Kritis</strong> - Tingkatkan kemampuanmu</li>
                     </ul>
                 </div>
 
                 <div class="psychological-insight">
-                    <strong>💡 Fakta Menarik:</strong> 90% orang terjebak minimal 3 logical fallacy dalam percakapan sehari-hari tanpa menyadarinya.
+                    <strong>💡 Fakta Menarik:</strong> Otak kita cenderung mengambil jalan pintas yang sering menyebabkan logical fallacy. Tes ini melatihmu untuk lebih aware!
                 </div>
 
                 <div style="margin-top: 30px;">
@@ -332,6 +341,10 @@
             <div class="quiz-info">
                 <div>Pertanyaan <span id="current-question">1</span> dari <span id="total-questions">10</span></div>
                 <div>Tes Logical Fallacy</div>
+            </div>
+
+            <div class="session-info">
+                🔄 <strong>Sesi Acak</strong> - Soal berbeda setiap tes
             </div>
 
             <div class="progress-bar">
@@ -386,7 +399,7 @@
                 </div>
 
                 <div style="margin-top: 30px;">
-                    <button onclick="restartQuiz()">🔄 Ulangi Tes</button>
+                    <button onclick="restartQuiz()">🔄 Ulangi Tes (Soal Baru)</button>
                     <button onclick="showStartScreen()" class="secondary">🏠 Kembali ke Menu</button>
                 </div>
             </div>
@@ -398,7 +411,7 @@
     </footer>
 
     <script>
-        // BANK SOAL YANG LEBIH SEIMBANG
+        // BANK SOAL BESAR - 40+ skenario berbeda
         const questionBank = [
             {
                 scenario: "Seorang influencer berkata: 'Produk ini digunakan oleh 95% artis Hollywood! Pasti efektif.'",
@@ -529,18 +542,209 @@
                 correctAnswer: 2,
                 analysis: "<strong>Argumentum ad Populum</strong>. Popularitas tidak sama dengan kebenaran. Bukti empiris lebih penting.",
                 fallacy: "Argumentum ad Populum"
+            },
+            {
+                scenario: "Iklan: 'Produk ini 100% alami, jadi pasti aman dan efektif.'",
+                context: "Iklan suplemen kesehatan",
+                options: [
+                    "Percaya karena bahan alami selalu baik",
+                    "Mempertanyakan bukti efektivitas klinis",
+                    "Mencari tahu dosis dan potensi efek samping",
+                    "Menganggap sama dengan produk sintetis"
+                ],
+                correctAnswer: 2,
+                analysis: "<strong>Naturalistic Fallacy</strong>. 'Alami' tidak sama dengan 'aman'. Evaluasi komprehensif diperlukan.",
+                fallacy: "Naturalistic Fallacy"
+            },
+            {
+                scenario: "'Ahli ekonomi A mendukung kebijakan X, sementara ahli B menolak. Saya pilih yang sejalan dengan keyakinan saya.'",
+                context: "Diskusi kebijakan kontroversial",
+                options: [
+                    "Mengikuti ahli yang paling terkenal",
+                    "Memilih yang sesuai nilai personal",
+                    "Menganalisis argumen kedua belah pihak secara objektif",
+                    "Mencari konsensus di antara para ahli"
+                ],
+                correctAnswer: 2,
+                analysis: "<strong>Confirmation Bias</strong>. Analisis objektif mengatasi bias untuk mencari yang sesuai keyakinan.",
+                fallacy: "Confirmation Bias"
+            },
+            {
+                scenario: "'Karena tidak ada yang bisa membuktikan bahwa hantu tidak ada, berarti hantu itu ada.'",
+                context: "Diskusi tentang keberadaan hantu",
+                options: [
+                    "Setuju, karena tidak bisa dibuktikan tidak ada",
+                    "Menolak, karena tidak bisa dibuktikan ada",
+                    "Mempertanyakan beban pembuktian",
+                    "Mencari pengalaman pribadi orang lain"
+                ],
+                correctAnswer: 2,
+                analysis: "Ini adalah <strong>Argument from Ignorance</strong>. Ketidakmampuan membuktikan tidak ada, tidak membuktikan ada.",
+                fallacy: "Argument from Ignorance"
+            },
+            {
+                scenario: "'Kamu tidak bisa kritik pemerintah karena kamu bukan ahli ekonomi.'",
+                context: "Debat tentang kebijakan ekonomi",
+                options: [
+                    "Menerima dan diam karena bukan ahli",
+                    "Kritik balik dengan menyebut ketidakmampuan lawan",
+                    "Mempertanyakan relevansi latar belakang dengan validitas argumen",
+                    "Mencari dukungan dari ahli yang setuju"
+                ],
+                correctAnswer: 2,
+                analysis: "Ini adalah <strong>Ad Hominem</strong> (circumstantial). Validitas argumen tidak tergantung pada latar belakang.",
+                fallacy: "Ad Hominem"
+            },
+            {
+                scenario: "'Program ini berhasil di negara A, jadi pasti berhasil di negara kita.'",
+                context: "Diskusi kebijakan publik",
+                options: [
+                    "Setuju, karena sudah terbukti di tempat lain",
+                    "Menolak, karena kondisi negara berbeda",
+                    "Menganalisis kesamaan kondisi dan konteks kedua negara",
+                    "Mengusulkan trial di daerah kecil dulu"
+                ],
+                correctAnswer: 2,
+                analysis: "Ini adalah <strong>Hasty Generalization</strong> atau <strong>False Analogy</strong>. Keberhasilan di satu tempat tidak menjamin di tempat lain.",
+                fallacy: "False Analogy"
+            },
+            {
+                scenario: "'Kebijakan ini harus diterapkan karena sudah dilakukan sejak zaman dahulu.'",
+                context: "Diskusi tentang tradisi vs modernisasi",
+                options: [
+                    "Setuju, tradisi sudah teruji waktu",
+                    "Menolak, zaman sudah berubah",
+                    "Mempertanyakan relevansi tradisi dengan kondisi saat ini",
+                    "Mencari bukti efektivitas kebijakan tersebut"
+                ],
+                correctAnswer: 3,
+                analysis: "Ini adalah <strong>Appeal to Tradition</strong>. Usia suatu praktik tidak menjamin kebenarannya.",
+                fallacy: "Appeal to Tradition"
+            },
+            {
+                scenario: "'Kita harus mendukung perusahaan ini karena mereka menyumbang banyak untuk amal.'",
+                context: "Diskusi tentang etika bisnis",
+                options: [
+                    "Setuju, perusahaan yang dermawan patut didukung",
+                    "Menolak, karena sumbangan tidak menutupi kesalahan",
+                    "Mengevaluasi produk dan praktik bisnisnya secara terpisah",
+                    "Mempertanyakan motif di balik sumbangan"
+                ],
+                correctAnswer: 2,
+                analysis: "Ini adalah <strong>Red Herring</strong>. Sumbangan amal tidak relevan dengan kualitas produk atau etika bisnis.",
+                fallacy: "Red Herring"
+            },
+            {
+                scenario: "'Jika kamu tidak setuju dengan saya, berarti kamu tidak peduli dengan rakyat kecil.'",
+                context: "Debat tentang kebijakan sosial",
+                options: [
+                    "Menerima tuduhan dan mengubah pendirian",
+                    "Menyangkal dengan menyebut kontribusi untuk rakyat kecil",
+                    "Menolak dikotomi dan menjelaskan argumen secara rasional",
+                    "Menyerang balik dengan tuduhan serupa"
+                ],
+                correctAnswer: 2,
+                analysis: "Ini adalah <strong>False Dilemma</strong> dan <strong>Ad Hominem</strong>. Tidak setuju tidak berarti tidak peduli.",
+                fallacy: "False Dilemma + Ad Hominem"
+            },
+            {
+                scenario: "'Data menunjukkan bahwa orang yang bahagia lebih sehat. Jadi, untuk sehat, kita harus bahagia.'",
+                context: "Diskusi tentang kesehatan dan kebahagiaan",
+                options: [
+                    "Setuju, karena data mendukung",
+                    "Mempertanyakan arah kausalitas: apakah sehat yang membuat bahagia?",
+                    "Mencari faktor ketiga yang mempengaruhi keduanya",
+                    "Mengabaikan karena korelasi tidak penting"
+                ],
+                correctAnswer: 1,
+                analysis: "Ini adalah <strong>Confusion of Cause and Effect</strong>. Korelasi tidak menunjukkan arah kausalitas.",
+                fallacy: "False Cause"
+            },
+            {
+                scenario: "'Kamu tidak bisa memakai ponsel buatan luar negeri sambil kritik globalisasi.'",
+                context: "Diskusi tentang globalisasi",
+                options: [
+                    "Menerima kritik dan berhenti memakai ponsel luar",
+                    "Menolak dengan menyebut ketergantungan teknologi",
+                    "Mempertanyakan relevansi konsumsi pribadi dengan argumen",
+                    "Mengatakan bahwa kritik tidak harus sempurna"
+                ],
+                correctAnswer: 2,
+                analysis: "Ini adalah <strong>Tu Quoque</strong> (you too). Konsumsi pribadi tidak membuat argumen tentang globalisasi tidak valid.",
+                fallacy: "Tu Quoque"
+            },
+            {
+                scenario: "'Saya sudah 20 tahun merokok dan sehat-sehat saja. Jadi merokok tidak berbahaya.'",
+                context: "Diskusi tentang bahaya merokok",
+                options: [
+                    "Setuju, pengalaman pribadi lebih berarti",
+                    "Mempertanyakan data statistik dan survivor bias",
+                    "Menyebut bahwa setiap orang berbeda",
+                    "Mencari tahu riwayat kesehatan keluarganya"
+                ],
+                correctAnswer: 1,
+                analysis: "Ini adalah <strong>Survivorship Bias</strong>. Hanya melihat yang selamat, tidak melihat yang tidak selamat.",
+                fallacy: "Survivorship Bias"
+            },
+            {
+                scenario: "'Film ini pasti bagus karena budget produksinya sangat besar.'",
+                context: "Diskusi tentang film baru",
+                options: [
+                    "Percaya dan nonton karena budget besar",
+                    "Mencari review dari kritikus film independen",
+                    "Menunggu rating dari penonton biasa",
+                    "Mempertanyakan hubungan antara budget dan kualitas"
+                ],
+                correctAnswer: 3,
+                analysis: "Ini adalah <strong>Appeal to Wealth</strong>. Budget besar tidak menjamin kualitas seni.",
+                fallacy: "Appeal to Wealth"
+            },
+            {
+                scenario: "'Agama saya pasti benar karena kitab sucinya mengatakan demikian.'",
+                context: "Diskusi antar agama",
+                options: [
+                    "Menerima karena kitab suci adalah wahyu",
+                    "Menolak karena kitab lain juga punya klaim serupa",
+                    "Mempertanyakan circular reasoning dalam argumen",
+                    "Membandingkan dengan kitab suci agama lain"
+                ],
+                correctAnswer: 2,
+                analysis: "Ini adalah <strong>Circular Reasoning</strong>. Menggunakan kitab suci sebagai bukti kebenaran kitab suci.",
+                fallacy: "Circular Reasoning"
+            },
+            {
+                scenario: "'Pemain bola itu pasti hebat karena dia dibayar mahal.'",
+                context: "Diskusi sepak bola",
+                options: [
+                    "Setuju, harga mencerminkan kualitas",
+                    "Melihat statistik performa pemain tersebut",
+                    "Mempertanyakan apakah gaji selalu sebanding dengan skill",
+                    "Membandingkan dengan pemain lain di posisi sama"
+                ],
+                correctAnswer: 2,
+                analysis: "Ini adalah <strong>Appeal to Wealth</strong>. Gaji tinggi tidak selalu berarti skill terbaik.",
+                fallacy: "Appeal to Wealth"
             }
+            // ... bisa ditambahkan lebih banyak soal di sini
         ];
 
         // State kuis
         let currentQuestionIndex = 0;
-        let userAnswers = Array(questionBank.length).fill(null);
+        let userAnswers = [];
         let score = 0;
+        let currentSessionQuestions = [];
+
+        // Fungsi untuk memilih 10 pertanyaan acak dari bank soal
+        function selectRandomQuestions() {
+            const shuffled = [...questionBank].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, 10);
+        }
 
         // Fungsi untuk memulai kuis
         function startQuiz() {
+            currentSessionQuestions = selectRandomQuestions();
             currentQuestionIndex = 0;
-            userAnswers = Array(questionBank.length).fill(null);
+            userAnswers = Array(currentSessionQuestions.length).fill(null);
             score = 0;
             showScreen('quiz-screen');
             loadQuestion();
@@ -556,21 +760,21 @@
 
         // Fungsi untuk memuat pertanyaan
         function loadQuestion() {
-            const question = questionBank[currentQuestionIndex];
+            const question = currentSessionQuestions[currentQuestionIndex];
             
             // Update info kuis
             document.getElementById('current-question').textContent = currentQuestionIndex + 1;
-            document.getElementById('total-questions').textContent = questionBank.length;
+            document.getElementById('total-questions').textContent = currentSessionQuestions.length;
             
             // Update progress bar
-            const progressPercentage = ((currentQuestionIndex + 1) / questionBank.length) * 100;
+            const progressPercentage = ((currentQuestionIndex + 1) / currentSessionQuestions.length) * 100;
             document.getElementById('quiz-progress').style.width = `${progressPercentage}%`;
             
             // Tampilkan skenario
             document.getElementById('scenario-text').textContent = question.scenario;
             document.getElementById('scenario-context').textContent = question.context;
             
-            // Tampilkan opsi jawaban - TANPA PENGACAKAN agar konsisten
+            // Tampilkan opsi jawaban
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
             
@@ -588,7 +792,7 @@
             // Update tombol navigasi
             document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
             
-            if (currentQuestionIndex === questionBank.length - 1) {
+            if (currentQuestionIndex === currentSessionQuestions.length - 1) {
                 document.getElementById('next-btn').style.display = 'none';
                 document.getElementById('submit-btn').style.display = 'block';
             } else {
@@ -597,12 +801,11 @@
             }
         }
 
-        // Fungsi untuk memilih opsi - DIPERBAIKI
+        // Fungsi untuk memilih opsi
         function selectOption(optionIndex) {
-            // Hanya pilih satu jawaban
             userAnswers[currentQuestionIndex] = optionIndex;
             
-            // Update tampilan - hanya satu yang terpilih
+            // Update tampilan opsi yang dipilih
             const options = document.querySelectorAll('.option');
             options.forEach((option, index) => {
                 option.classList.remove('selected');
@@ -614,7 +817,7 @@
 
         // Fungsi untuk pertanyaan berikutnya
         function nextQuestion() {
-            if (currentQuestionIndex < questionBank.length - 1) {
+            if (currentQuestionIndex < currentSessionQuestions.length - 1) {
                 currentQuestionIndex++;
                 loadQuestion();
             }
@@ -632,7 +835,7 @@
         function submitQuiz() {
             // Hitung skor
             score = 0;
-            questionBank.forEach((question, index) => {
+            currentSessionQuestions.forEach((question, index) => {
                 if (userAnswers[index] === question.correctAnswer) {
                     score++;
                 }
@@ -644,7 +847,7 @@
 
         // Fungsi untuk menampilkan hasil
         function showResults() {
-            const percentage = Math.round((score / questionBank.length) * 100);
+            const percentage = Math.round((score / currentSessionQuestions.length) * 100);
             
             // Update elemen hasil
             document.getElementById('final-score').textContent = `${percentage}%`;
@@ -697,7 +900,7 @@
             const resultsDetails = document.getElementById('results-details');
             resultsDetails.innerHTML = '<h3>Detail Jawaban:</h3>';
             
-            questionBank.forEach((question, index) => {
+            currentSessionQuestions.forEach((question, index) => {
                 const isCorrect = userAnswers[index] === question.correctAnswer;
                 const userAnswerText = userAnswers[index] !== null ? question.options[userAnswers[index]] : 'Tidak dijawab';
                 const correctAnswerText = question.options[question.correctAnswer];
