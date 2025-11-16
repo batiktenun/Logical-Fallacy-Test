@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tes Cara Berpikir Kritis - Apakah Pola Pikir Anda Logis?</title>
+    <title>Logical Fallacy Test - Apakah kamu bisa lolos dari Logical Fallacy?</title>
     <style>
         * {
             box-sizing: border-box;
@@ -298,8 +298,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>🧠 Tes Cara Berpikir Kritis</h1>
-            <p class="subtitle">Uji seberapa logis dan kritis pola pikir Anda dalam situasi sehari-hari</p>
+            <h1>🧠 Logical Fallacy Test</h1>
+            <p class="subtitle">Uji kemampuanmu dalam menghindari jebakan kesesatan logika</p>
             <div class="disclaimer">
                 ⚠️ Tes ini untuk refleksi diri, bukan diagnosis psikologis
             </div>
@@ -308,15 +308,15 @@
         <!-- Start Screen -->
         <section id="start-screen" class="screen active">
             <div class="start-screen">
-                <h2>Temukan Pola Pikir Anda!</h2>
-                <p>Tes ini akan menganalisis cara Anda merespons berbagai situasi untuk mengungkap pola berpikir yang mungkin tidak Anda sadari.</p>
+                <h2>Apakah kamu bisa lolos dari Logical Fallacy?</h2>
+                <p>Tes ini akan menantangmu dengan skenario sehari-hari untuk melihat seberapa baik kamu menghindari logical fallacy.</p>
                 
                 <div class="feature-list">
-                    <h3>Apa yang akan Anda dapatkan:</h3>
+                    <h3>Apa yang akan kamu dapatkan:</h3>
                     <ul>
                         <li>✅ 8 skenario kehidupan nyata</li>
                         <li>✅ Analisis pola berpikir tersembunyi</li>
-                        <li>✅ Profil tipe pemikir Anda</li>
+                        <li>✅ Profil tipe pemikir kamu</li>
                         <li>✅ Tips meningkatkan kualitas berpikir</li>
                         <li>✅ Wawasan tentang bias kognitif</li>
                     </ul>
@@ -336,7 +336,7 @@
         <section id="quiz-screen" class="screen">
             <div class="quiz-info">
                 <div>Skenario <span id="current-question">1</span> dari <span id="total-questions">8</span></div>
-                <div>Tes Berpikir Kritis</div>
+                <div>Logical Fallacy Test</div>
             </div>
 
             <div class="progress-bar">
@@ -348,7 +348,7 @@
                 <div class="context" id="scenario-context"></div>
             </div>
 
-            <h3>Apa yang akan Anda lakukan/katakan?</h3>
+            <h3>Apa yang akan kamu lakukan/katakan?</h3>
             <div class="options-container" id="options-container">
                 <!-- Options will be inserted here by JavaScript -->
             </div>
@@ -363,7 +363,7 @@
         <!-- Results Screen -->
         <section id="results-screen" class="screen">
             <div class="results-screen">
-                <h2>Hasil Tes Cara Berpikir Anda</h2>
+                <h2>Hasil Logical Fallacy Test</h2>
                 
                 <div class="score-display">
                     <div class="score-circle">
@@ -399,14 +399,14 @@
     </div>
 
     <footer>
-        &copy; 2023 Tes Berpikir Kritis - Kenali Pola Pikir Anda
+        Logical Fallacy Test | Kawan2 Kelola | 2025
     </footer>
 
     <script>
         // Database skenario tes
         const quizScenarios = [
             {
-                scenario: "Anda melihat postingan media sosial yang mengatakan: 'Produk ini sudah digunakan oleh 95% artis Hollywood! Bukti bahwa produk ini efektif.'",
+                scenario: "Kamu melihat postingan media sosial yang mengatakan: 'Produk ini sudah digunakan oleh 95% artis Hollywood! Bukti bahwa produk ini efektif.'",
                 context: "Postingan tersebut dari influencer terkenal dengan 2 juta followers",
                 options: [
                     "Langsung membeli produk karena banyak artis yang pakai",
@@ -418,19 +418,19 @@
                 analysis: "Pilihan terbaik adalah mencari bukti independen. Mengandalkan popularitas (Appeal to Popularity) tanpa bukti konkret adalah kesalahan logika umum."
             },
             {
-                scenario: "Teman Anda berkata: 'Saya tidak percaya dengan laporan iklim itu. Kemarin dingin sekali, mana mungkin ada pemanasan global?'",
+                scenario: "Temanmu berkata: 'Saya tidak percaya dengan laporan iklim itu. Kemarin dingin sekali, mana mungkin ada pemanasan global?'",
                 context: "Percakapan santai di kafe saat cuaca memang unusually cold",
                 options: [
-                    "Setuju, karena Anda juga merasakan cuaca yang dingin",
+                    "Setuju, karena kamu juga merasakan cuaca yang dingin",
                     "Menjelaskan perbedaan antara cuaca harian dan tren iklim jangka panjang",
-                    "Mengatakan teman Anda tidak memahami sains dengan benar",
+                    "Mengatakan temanmu tidak memahami sains dengan benar",
                     "Diam saja karena tidak ingin berdebat"
                 ],
                 scores: [0, 3, 1, 1],
                 analysis: "Membedakan antara anekdot personal (cuaca hari ini) dengan data ilmiah (tren iklim 30+ tahun) menunjukkan pemikiran kritis yang baik."
             },
             {
-                scenario: "Atasan Anda mengatakan: 'Proyek sebelumnya gagal karena tim kita tidak disiplin. Jadi untuk proyek baru ini, kita harus menerapkan aturan yang sangat ketat.'",
+                scenario: "Atasanmu mengatakan: 'Proyek sebelumnya gagal karena tim kita tidak disiplin. Jadi untuk proyek baru ini, kita harus menerapkan aturan yang sangat ketat.'",
                 context: "Proyek sebelumnya memang bermasalah, tetapi ada berbagai faktor penyebab",
                 options: [
                     "Menerima saja karena atasan pasti lebih tahu",
@@ -442,7 +442,7 @@
                 analysis: "Hasty Generalization - menyimpulkan satu penyebab tanpa analisis mendalam. Pemikiran kritis mencari multiple causation."
             },
             {
-                scenario: "Anda membaca berita: 'Penjualan es krim meningkat bersamaan dengan meningkatnya kasus tenggelam. Waspada, es krim menyebabkan orang tenggelam!'",
+                scenario: "Kamu membaca berita: 'Penjualan es krim meningkat bersamaan dengan meningkatnya kasus tenggelam. Waspada, es krim menyebabkan orang tenggelam!'",
                 context: "Data statistik menunjukkan korelasi yang nyata",
                 options: [
                     "Percaya dan berhenti makan es krim",
@@ -490,13 +490,13 @@
                 analysis: "Hasty Generalization - menggeneralisasi seluruh kelompok berdasarkan beberapa contoh. Pemikiran kritis menghindari stereotip."
             },
             {
-                scenario: "Anda mendengar: 'Orang sukses selalu bangun jam 4 pagi. Jika ingin sukses, Anda harus melakukan hal yang sama.'",
+                scenario: "Kamu mendengar: 'Orang sukses selalu bangun jam 4 pagi. Jika ingin sukses, kamu harus melakukan hal yang sama.'",
                 context: "Motivational speaker terkenal mengatakan ini dalam seminar",
                 options: [
                     "Mulai bangun jam 4 pagi besok",
-                    "Mempertanyakan bukti dan mengevaluasi apakah ini cocok dengan gaya hidup Anda",
-                    "Menganggap ini omong kosong karena Anda bukan morning person",
-                    "Menyimpulkan bahwa Anda tidak akan pernah sukses"
+                    "Mempertanyakan bukti dan mengevaluasi apakah ini cocok dengan gaya hidupmu",
+                    "Menganggap ini omong kosong karena kamu bukan morning person",
+                    "Menyimpulkan bahwa kamu tidak akan pernah sukses"
                 ],
                 scores: [1, 3, 1, 0],
                 analysis: "Post Hoc fallacy - mengasumsikan A menyebabkan B hanya karena berkorelasi. Kesuksesan dipengaruhi banyak faktor, bukan hanya bangun pagi."
@@ -627,25 +627,25 @@
             let personalityTitle, personalityDescription, feedbackClass, feedbackMessage;
             
             if (percentage >= 80) {
-                personalityTitle = "🔍 Pemikir Kritis Andal";
-                personalityDescription = "Anda memiliki kemampuan berpikir kritis yang sangat baik! Anda jarang terjebak dalam fallacy logika dan selalu mencari bukti sebelum mengambil keputusan.";
+                personalityTitle = "🔍 Logical Thinker Expert";
+                personalityDescription = "Kamu memiliki kemampuan berpikir kritis yang sangat baik! Kamu jarang terjebak dalam fallacy logika dan selalu mencari bukti sebelum mengambil keputusan.";
                 feedbackClass = "good";
-                feedbackMessage = "Kekuatan Anda: skeptisisme sehat, analisis mendalam, dan menghindari generalisasi.";
+                feedbackMessage = "Kekuatanmu: skeptisisme sehat, analisis mendalam, dan menghindari generalisasi.";
             } else if (percentage >= 60) {
-                personalityTitle = "💭 Pemikir Sadar Diri";
-                personalityDescription = "Anda memiliki dasar berpikir kritis yang baik, tetapi kadang masih terpengaruh oleh bias atau emosi. Teruslah berlatih!";
+                personalityTitle = "💭 Conscious Thinker";
+                personalityDescription = "Kamu memiliki dasar berpikir kritis yang baik, tetapi kadang masih terpengaruh oleh bias atau emosi. Teruslah berlatih!";
                 feedbackClass = "average";
-                feedbackMessage = "Anda sudah di jalur yang benar. Tingkatkan dengan lebih banyak mempertanyakan asumsi.";
+                feedbackMessage = "Kamu sudah di jalur yang benar. Tingkatkan dengan lebih banyak mempertanyakan asumsi.";
             } else if (percentage >= 40) {
-                personalityTitle = "🌱 Pemikir Berkembang";
-                personalityDescription = "Anda mulai mengembangkan kesadaran akan pentingnya berpikir kritis, tetapi masih sering terjebak pola pikir konvensional.";
+                personalityTitle = "🌱 Developing Thinker";
+                personalityDescription = "Kamu mulai mengembangkan kesadaran akan pentingnya berpikir kritis, tetapi masih sering terjebak pola pikir konvensional.";
                 feedbackClass = "average";
                 feedbackMessage = "Tips: cobalah selalu mencari perspektif alternatif sebelum mengambil keputusan.";
             } else {
-                personalityTitle = "🧭 Pemikir Potensial";
-                personalityDescription = "Anda memiliki potensi untuk menjadi pemikir kritis! Saatnya belajar mengenali pola pikir yang menyesatkan.";
+                personalityTitle = "🧭 Potential Thinker";
+                personalityDescription = "Kamu memiliki potensi untuk menjadi pemikir kritis! Saatnya belajar mengenali pola pikir yang menyesatkan.";
                 feedbackClass = "poor";
-                feedbackMessage = "Mulailah dengan mempertanyakan informasi yang diterima, terutama yang sesuai dengan keyakinan Anda.";
+                feedbackMessage = "Mulailah dengan mempertanyakan informasi yang diterima, terutama yang sesuai dengan keyakinanmu.";
             }
             
             document.getElementById('personality-title').textContent = personalityTitle;
@@ -653,7 +653,7 @@
             
             const feedbackElement = document.getElementById('feedback-message');
             feedbackElement.className = `feedback ${feedbackClass}`;
-            feedbackElement.innerHTML = `<h3>Analisis Pola Pikir Anda:</h3><p>${feedbackMessage}</p>`;
+            feedbackElement.innerHTML = `<h3>Analisis Pola Pikirmu:</h3><p>${feedbackMessage}</p>`;
             
             // Generate thinking tips
             const tipsContent = document.getElementById('thinking-tips-content');
@@ -681,7 +681,7 @@
                 
                 resultItem.innerHTML = `
                     <p><strong>Skenario ${index + 1}:</strong> ${scenario.scenario}</p>
-                    <p><strong>Respons Anda:</strong> ${userAnswerIndex !== null ? scenario.options[userAnswerIndex] : 'Tidak dijawab'} 
+                    <p><strong>Respons Kamu:</strong> ${userAnswerIndex !== null ? scenario.options[userAnswerIndex] : 'Tidak dijawab'} 
                     <span style="float: right; background: ${userScore === maxScore ? '#28a745' : userScore >= 1 ? '#ffc107' : '#dc3545'}; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">
                         ${userScore}/${maxScore}
                     </span></p>
