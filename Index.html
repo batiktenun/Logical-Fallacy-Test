@@ -319,7 +319,7 @@
                 <div class="feature-list">
                     <h3>Fitur Terbaru:</h3>
                     <ul>
-                        <li>🎲 <strong>40+ Skenario Acak</strong> - Tidak pernah bosan</li>
+                        <li>🎲 <strong>30+ Skenario Acak</strong> - Tidak pernah bosan</li>
                         <li>🔄 <strong>Sesi Unik Setiap Kali</strong> - Pengalaman berbeda tiap tes</li>
                         <li>📊 <strong>Analisis Mendalam</strong> - Pahami pola pikirmu</li>
                         <li>💡 <strong>Tips Berpikir Kritis</strong> - Tingkatkan kemampuanmu</li>
@@ -411,21 +411,37 @@
     </footer>
 
     <script>
-        // BANK SOAL BESAR - 40+ skenario berbeda
+        // BANK SOAL DENGAN DISTRIBUSI JAWABAN YANG SEIMBANG
         const questionBank = [
+            // Jawaban benar di A
             {
-                scenario: "Seorang influencer berkata: 'Produk ini digunakan oleh 95% artis Hollywood! Pasti efektif.'",
-                context: "Postingan sponsor dengan 2 juta likes",
+                scenario: "Seorang politisi berkata: 'Program ini berhasil di negara A, jadi pasti berhasil di negara kita.'",
+                context: "Diskusi kebijakan publik",
                 options: [
-                    "Langsung membeli karena buktinya jelas dari artis ternama",
-                    "Mencari penelitian independen tentang efektivitas produk", 
-                    "Mengabaikan karena tidak percaya artis Hollywood",
-                    "Mempertanyakan sampel survei dan konteks rekomendasi"
+                    "Menganalisis kesamaan kondisi dan konteks kedua negara sebelum memutuskan",
+                    "Setuju, karena sudah terbukti di tempat lain",
+                    "Menolak, karena kondisi negara berbeda",
+                    "Mengusulkan trial di daerah kecil dulu"
                 ],
-                correctAnswer: 3,
-                analysis: "Ini adalah <strong>Appeal to Authority</strong>. Mempertanyakan metodologi survei lebih langsung mengatasi fallacy dibanding hanya mencari penelitian lain.",
-                fallacy: "Appeal to Authority"
+                correctAnswer: 0,
+                analysis: "Ini adalah <strong>False Analogy</strong>. Keberhasilan di satu tempat tidak menjamin di tempat lain. Analisis konteks yang cermat diperlukan.",
+                fallacy: "False Analogy"
             },
+            {
+                scenario: "'Kamu tidak bisa kritik pemerintah karena kamu bukan ahli ekonomi.'",
+                context: "Debat tentang kebijakan ekonomi",
+                options: [
+                    "Mempertanyakan relevansi latar belakang dengan validitas argumen",
+                    "Menerima dan diam karena bukan ahli",
+                    "Kritik balik dengan menyebut ketidakmampuan lawan",
+                    "Mencari dukungan dari ahli yang setuju"
+                ],
+                correctAnswer: 0,
+                analysis: "Ini adalah <strong>Ad Hominem</strong> (circumstantial). Validitas argumen tidak tergantung pada latar belakang.",
+                fallacy: "Ad Hominem"
+            },
+            
+            // Jawaban benar di B
             {
                 scenario: "Diskusi perubahan iklim: 'Tidak mungkin ada pemanasan global, kemarin sangat dingin!'",
                 context: "Percakapan saat musim dingin yang unusually cold",
@@ -440,18 +456,20 @@
                 fallacy: "Hasty Generalization"
             },
             {
-                scenario: "Manajer berkata: 'Proyek gagal karena tim malas. Solusinya: peraturan lebih ketat.'",
-                context: "Proyek kompleks dengan multiple stakeholder",
+                scenario: "Rapat krisis: 'Pilih: potong budget marketing atau PHK staff. Tidak ada opsi lain.'",
+                context: "Perusahaan startup sedang burn rate tinggi",
                 options: [
-                    "Menerima karena manajer lebih berpengalaman",
-                    "Menganalisis semua faktor penyebab kegagalan",
-                    "Mengusulkan sistem reward, bukan punishment", 
-                    "Meminta evaluasi proses dan komunikasi tim"
+                    "Menerima dikotomi dan memilih yang lesser evil",
+                    "Menolak dikotomi dan mengeksplorasi efisiensi operasional", 
+                    "Meminta data detail sebelum memutuskan",
+                    "Mengusulkan reduksi gaji sementara semua level"
                 ],
                 correctAnswer: 1,
-                analysis: "Ini adalah <strong>Oversimplification</strong>. Analisis komprehensif lebih baik daripada langsung menerima solusi simplistik.",
-                fallacy: "Oversimplification"
+                analysis: "<strong>False Dilemma</strong> - selalu ada opsi ketiga. Menolak premis palsu adalah langkah pertama.",
+                fallacy: "False Dilemma"
             },
+            
+            // Jawaban benar di C
             {
                 scenario: "Berita: 'Penjualan es krim dan kasus tenggelam meningkat bersamaan. Es krim berbahaya!'",
                 context: "Data korelasi statistik musim panas",
@@ -466,19 +484,6 @@
                 fallacy: "False Cause"
             },
             {
-                scenario: "Rapat krisis: 'Pilih: potong budget marketing atau PHK staff. Tidak ada opsi lain.'",
-                context: "Perusahaan startup sedang burn rate tinggi",
-                options: [
-                    "Menerima dikotomi dan memilih yang lesser evil",
-                    "Menolak dikotomi dan mengeksplorasi efisiensi operasional", 
-                    "Meminta data detail sebelum memutuskan",
-                    "Mengusulkan reduksi gaji sementara semua level"
-                ],
-                correctAnswer: 1,
-                analysis: "<strong>False Dilemma</strong> - selalu ada opsi ketiga. Menolak premis palsu adalah langkah pertama.",
-                fallacy: "False Dilemma"
-            },
-            {
                 scenario: "Iklan: '9 dari 10 dokter merekomendasikan!' Tapi sampelnya 10 dokter dari 1 klinik.",
                 context: "Iklan produk kesehatan mahal",
                 options: [
@@ -491,18 +496,20 @@
                 analysis: "<strong>Biased Sample</strong>. Mempertanyakan representativitas lebih fundamental daripada hanya mengabaikan.",
                 fallacy: "Biased Sample"
             },
+            
+            // Jawaban benar di D
             {
-                scenario: "'Orang sukses bangun jam 4 pagi. Jika ingin sukses, ikuti saja!'",
-                context: "Seminar motivasi mahal",
+                scenario: "Seorang influencer berkata: 'Produk ini digunakan oleh 95% artis Hollywood! Pasti efektif.'",
+                context: "Postingan sponsor dengan 2 juta likes",
                 options: [
-                    "Percaya dan mengubah jadwal tidur",
-                    "Menolak karena tidak cocok dengan chronotype sendiri",
-                    "Mempertanyakan bukti kausal dan keberagaman jalan sukses",
-                    "Mencari contoh orang sukses dengan jadwal berbeda"
+                    "Langsung membeli karena buktinya jelas dari artis ternama",
+                    "Mencari penelitian independen tentang efektivitas produk", 
+                    "Mengabaikan karena tidak percaya artis Hollywood",
+                    "Mempertanyakan sampel survei dan konteks rekomendasi"
                 ],
-                correctAnswer: 2,
-                analysis: "<strong>Post Hoc Fallacy</strong>. Mempertanyakan hubungan kausal lebih penting daripada mencari counter-example.",
-                fallacy: "False Cause"
+                correctAnswer: 3,
+                analysis: "Ini adalah <strong>Appeal to Authority</strong>. Mempertanyakan metodologi survei lebih langsung mengatasi fallacy dibanding hanya mencari penelitian lain.",
+                fallacy: "Appeal to Authority"
             },
             {
                 scenario: "'Produk competitor gagal di tes. Jadi produk kita pasti lebih baik.'",
@@ -517,32 +524,8 @@
                 analysis: "<strong>Relative Privation</strong>. Kegagalan orang lain tidak membuktikan keberhasilan kita. Evaluasi objektif diperlukan.",
                 fallacy: "Relative Privation"
             },
-            {
-                scenario: "'Semua orang di departemen setuju dengan proposal ini.'",
-                context: "Padahal hanya 3 dari 10 orang yang di-survey",
-                options: [
-                    "Menerima sebagai konsensus",
-                    "Mempertanyakan proses survei dan sample size",
-                    "Meminta data siapa saja yang setuju",
-                    "Menganggap ini sebagai social proof yang valid"
-                ],
-                correctAnswer: 1,
-                analysis: "<strong>Bandwagon Fallacy</strong> dengan <strong>Hasty Generalization</strong>. Mempertanyakan metodologi adalah kunci.",
-                fallacy: "Bandwagon + Hasty Generalization"
-            },
-            {
-                scenario: "'Program pemerintah ini bagus karena banyak yang mendukung.'",
-                context: "Debat politik di media sosial",
-                options: [
-                    "Setuju, suara rakyat adalah suara Tuhan",
-                    "Mempertanyakan kualitas argumen pendukung",
-                    "Melihat data efektivitas program serupa di tempat lain", 
-                    "Memeriksa apakah kritik juga mendapat platform yang sama"
-                ],
-                correctAnswer: 2,
-                analysis: "<strong>Argumentum ad Populum</strong>. Popularitas tidak sama dengan kebenaran. Bukti empiris lebih penting.",
-                fallacy: "Argumentum ad Populum"
-            },
+            
+            // Variasi tambahan dengan distribusi seimbang
             {
                 scenario: "Iklan: 'Produk ini 100% alami, jadi pasti aman dan efektif.'",
                 context: "Iklan suplemen kesehatan",
@@ -552,22 +535,9 @@
                     "Mencari tahu dosis dan potensi efek samping",
                     "Menganggap sama dengan produk sintetis"
                 ],
-                correctAnswer: 2,
+                correctAnswer: 1,
                 analysis: "<strong>Naturalistic Fallacy</strong>. 'Alami' tidak sama dengan 'aman'. Evaluasi komprehensif diperlukan.",
                 fallacy: "Naturalistic Fallacy"
-            },
-            {
-                scenario: "'Ahli ekonomi A mendukung kebijakan X, sementara ahli B menolak. Saya pilih yang sejalan dengan keyakinan saya.'",
-                context: "Diskusi kebijakan kontroversial",
-                options: [
-                    "Mengikuti ahli yang paling terkenal",
-                    "Memilih yang sesuai nilai personal",
-                    "Menganalisis argumen kedua belah pihak secara objektif",
-                    "Mencari konsensus di antara para ahli"
-                ],
-                correctAnswer: 2,
-                analysis: "<strong>Confirmation Bias</strong>. Analisis objektif mengatasi bias untuk mencari yang sesuai keyakinan.",
-                fallacy: "Confirmation Bias"
             },
             {
                 scenario: "'Karena tidak ada yang bisa membuktikan bahwa hantu tidak ada, berarti hantu itu ada.'",
@@ -581,32 +551,6 @@
                 correctAnswer: 2,
                 analysis: "Ini adalah <strong>Argument from Ignorance</strong>. Ketidakmampuan membuktikan tidak ada, tidak membuktikan ada.",
                 fallacy: "Argument from Ignorance"
-            },
-            {
-                scenario: "'Kamu tidak bisa kritik pemerintah karena kamu bukan ahli ekonomi.'",
-                context: "Debat tentang kebijakan ekonomi",
-                options: [
-                    "Menerima dan diam karena bukan ahli",
-                    "Kritik balik dengan menyebut ketidakmampuan lawan",
-                    "Mempertanyakan relevansi latar belakang dengan validitas argumen",
-                    "Mencari dukungan dari ahli yang setuju"
-                ],
-                correctAnswer: 2,
-                analysis: "Ini adalah <strong>Ad Hominem</strong> (circumstantial). Validitas argumen tidak tergantung pada latar belakang.",
-                fallacy: "Ad Hominem"
-            },
-            {
-                scenario: "'Program ini berhasil di negara A, jadi pasti berhasil di negara kita.'",
-                context: "Diskusi kebijakan publik",
-                options: [
-                    "Setuju, karena sudah terbukti di tempat lain",
-                    "Menolak, karena kondisi negara berbeda",
-                    "Menganalisis kesamaan kondisi dan konteks kedua negara",
-                    "Mengusulkan trial di daerah kecil dulu"
-                ],
-                correctAnswer: 2,
-                analysis: "Ini adalah <strong>Hasty Generalization</strong> atau <strong>False Analogy</strong>. Keberhasilan di satu tempat tidak menjamin di tempat lain.",
-                fallacy: "False Analogy"
             },
             {
                 scenario: "'Kebijakan ini harus diterapkan karena sudah dilakukan sejak zaman dahulu.'",
@@ -721,11 +665,75 @@
                     "Mempertanyakan apakah gaji selalu sebanding dengan skill",
                     "Membandingkan dengan pemain lain di posisi sama"
                 ],
-                correctAnswer: 2,
+                correctAnswer: 1,
                 analysis: "Ini adalah <strong>Appeal to Wealth</strong>. Gaji tinggi tidak selalu berarti skill terbaik.",
                 fallacy: "Appeal to Wealth"
+            },
+            {
+                scenario: "Manajer berkata: 'Proyek gagal karena tim malas. Solusinya: peraturan lebih ketat.'",
+                context: "Proyek kompleks dengan multiple stakeholder",
+                options: [
+                    "Menganalisis semua faktor penyebab kegagalan secara komprehensif",
+                    "Menerima karena manajer lebih berpengalaman",
+                    "Mengusulkan sistem reward, bukan punishment", 
+                    "Meminta evaluasi proses dan komunikasi tim"
+                ],
+                correctAnswer: 0,
+                analysis: "Ini adalah <strong>Oversimplification</strong>. Analisis komprehensif lebih baik daripada langsung menerima solusi simplistik.",
+                fallacy: "Oversimplification"
+            },
+            {
+                scenario: "'Orang sukses bangun jam 4 pagi. Jika ingin sukses, ikuti saja!'",
+                context: "Seminar motivasi mahal",
+                options: [
+                    "Percaya dan mengubah jadwal tidur",
+                    "Mempertanyakan bukti kausal dan keberagaman jalan sukses",
+                    "Menolak karena tidak cocok dengan chronotype sendiri",
+                    "Mencari contoh orang sukses dengan jadwal berbeda"
+                ],
+                correctAnswer: 1,
+                analysis: "<strong>Post Hoc Fallacy</strong>. Mempertanyakan hubungan kausal lebih penting daripada mencari counter-example.",
+                fallacy: "False Cause"
+            },
+            {
+                scenario: "'Semua orang di departemen setuju dengan proposal ini.'",
+                context: "Padahal hanya 3 dari 10 orang yang di-survey",
+                options: [
+                    "Mempertanyakan proses survei dan sample size",
+                    "Menerima sebagai konsensus",
+                    "Meminta data siapa saja yang setuju",
+                    "Menganggap ini sebagai social proof yang valid"
+                ],
+                correctAnswer: 0,
+                analysis: "<strong>Bandwagon Fallacy</strong> dengan <strong>Hasty Generalization</strong>. Mempertanyakan metodologi adalah kunci.",
+                fallacy: "Bandwagon + Hasty Generalization"
+            },
+            {
+                scenario: "'Program pemerintah ini bagus karena banyak yang mendukung.'",
+                context: "Debat politik di media sosial",
+                options: [
+                    "Melihat data efektivitas program serupa di tempat lain", 
+                    "Setuju, suara rakyat adalah suara Tuhan",
+                    "Mempertanyakan kualitas argumen pendukung",
+                    "Memeriksa apakah kritik juga mendapat platform yang sama"
+                ],
+                correctAnswer: 0,
+                analysis: "<strong>Argumentum ad Populum</strong>. Popularitas tidak sama dengan kebenaran. Bukti empiris lebih penting.",
+                fallacy: "Argumentum ad Populum"
+            },
+            {
+                scenario: "'Ahli ekonomi A mendukung kebijakan X, sementara ahli B menolak. Saya pilih yang sejalan dengan keyakinan saya.'",
+                context: "Diskusi kebijakan kontroversial",
+                options: [
+                    "Menganalisis argumen kedua belah pihak secara objektif",
+                    "Mengikuti ahli yang paling terkenal",
+                    "Memilih yang sesuai nilai personal",
+                    "Mencari konsensus di antara para ahli"
+                ],
+                correctAnswer: 0,
+                analysis: "<strong>Confirmation Bias</strong>. Analisis objektif mengatasi bias untuk mencari yang sesuai keyakinan.",
+                fallacy: "Confirmation Bias"
             }
-            // ... bisa ditambahkan lebih banyak soal di sini
         ];
 
         // State kuis
